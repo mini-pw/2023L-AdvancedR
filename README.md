@@ -1,2 +1,3 @@
-# 2023L-AdvancedR
-Programming and data analysis advanced in R course in Spring 2022/23
+### Programowanie i analiza danych dla zaawansowanych w R
+
+[@kozaka93](https://github.com/kozaka93)
