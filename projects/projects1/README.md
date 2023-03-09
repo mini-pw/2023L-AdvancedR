@@ -50,3 +50,26 @@ Oddanie tej części będzie polegało na wypełnieniu *Ankiety o zbiorze danych
 2. W przypadku dodania zbioru, który już ktoś wcześniej już umieścił można otrzymać maksymalnie 5p.
 3. Punkty przyznawane są za wypełnienie ankiety i za umieszczenie zbioru danych na repozytorium.
 4. Do zbiorów, które będą sztucznie wygenerowane należy dodatkowo zamieścić kod, który pozwoli na odtworzenie wykorzystanych przekształceń. 
+
+## Pytania
+
+1. Ile jest kolumn kategorycznych
+2. Ile jest kolumn liczbowych
+3. Ile jest kolumn time stampowych
+4. Jaki jest target zbioru danych (y)
+5. Jaki typ ma target
+6. Ilość obserwacji posiadającyh conajmniej jeden brak w danych
+7. Ilość obserwacji gdzie brakuje targetu
+8. Ile i które kolumny są statyczne
+9. Ile i które kolumny są duplikatami
+10. Jak mocno skorelowane są zmienne liczbowe (Pearsona) i kategoryczne (Crammera V)
+11. Ile i które kolumny są ID-like (mają id w nazwie / są takim kluczem głównym, sąnumeracją pewnego rodzaju)
+12. Ile obserwacji zawiera zbiór danych
+13. Czy dane są rzeczywiste czy sztucznie wygenerowane
+14. Krótki opis zbioru danych
+15. Gdzie znaleziony został zbiór danych
+16. Jaka jest proporcja klas targetu / Jaki jest rozkład wartości targetu
+17. Ile unikalnych wartości (levels) mają poszczególne zmienne kategoryczne
+
+
+
