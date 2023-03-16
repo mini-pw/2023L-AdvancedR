@@ -39,7 +39,7 @@
     <td rowspan="4">2</td>
     <td rowspan="4">02-03</td>
     <td rowspan="4">CRISP DM = CRoss Industry Standard Process for Data Mining</td>
-    <td rowspan="4">Rozgrzewka z R.</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/blob/main/labs/exercise.md target="_blank" rel="noopener noreferrer">Rozgrzewka z R.</a></td>
     <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/projects/projects1 target="_blank" rel="noopener noreferrer">Projekt 1 - cel, wymagania, efekty.</a></td>
   </tr>
   <tr>
