@@ -51,7 +51,7 @@
   <tr>
     <td rowspan="4">3</td>
     <td rowspan="4">09-03</td>
-    <td rowspan="4">Dobre praktyki tworzenia kodu w R</td>
+    <td rowspan="4"><a href=https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/#coverpage target="_blank" rel="noopener noreferrer">Dobre praktyki tworzenia kodu w R</a></td>
     <td rowspan="4">Ćwiczenie dobrych praktyk tworzenia kodu w R.</td>
     <td rowspan="4">Konsultacje.</td>
   </tr>
