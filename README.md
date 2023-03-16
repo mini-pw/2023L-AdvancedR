@@ -40,7 +40,7 @@
     <td rowspan="4">02-03</td>
     <td rowspan="4">CRISP DM = CRoss Industry Standard Process for Data Mining</td>
     <td rowspan="4">Rozgrzewka z R.</td>
-    <td rowspan="4">Projekt 1 - cel, wymagania, efekty.</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/projects/projects1 target="_blank" rel="noopener noreferrer">Projekt 1 - cel, wymagania, efekty.</a></td>
   </tr>
   <tr>
   </tr>
@@ -66,7 +66,7 @@
     <td rowspan="4">16.03</td>
     <td rowspan="4">EDA &amp; AutoEDA</td>
     <td rowspan="4">Reprodukowalność wyników.</td>
-    <td rowspan="4">Oddanie P1.1</td>
+    <td rowspan="4">Konsultacje.</td>
   </tr>
   <tr>
   </tr>
@@ -77,9 +77,9 @@
   <tr>
     <td rowspan="4">5</td>
     <td rowspan="4">23.03</td>
+    <td rowspan="4">Prezentacje studenckie.</td>
     <td rowspan="4">Znajomość pakietów z rodziny tidyverse - część 1.</td>
-    <td rowspan="4">Ćwieczenia tidyverse - część 1.</td>
-    <td rowspan="4">Konsultacje.</td>
+    <td rowspan="4">Oddanie P1.1</td>
   </tr>
   <tr>
   </tr>
@@ -91,7 +91,7 @@
     <td rowspan="4">6</td>
     <td rowspan="4">30.03</td>
     <td rowspan="4">Znajomość pakietów z rodziny tidyverse - część 2.</td>
-    <td rowspan="4">Ćwieczenia tidyverse - część 2.</td>
+    <td rowspan="4">Ćwieczenia tidyverse.</td>
     <td rowspan="4">Oddanie P1.2</td>
   </tr>
   <tr>
