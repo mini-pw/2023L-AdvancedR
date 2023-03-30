@@ -3,7 +3,7 @@
 | 23.03.2023 | Tymoteusz Kwieciński, Marta Szuwarska                     | Expanding Tidy Data Principles to Facilitate Missing Data Exploration, Visualization and Assessment of Imputations |
 | 13.04.2023 | Jakub Piwko, Dominik Kędzierski, Kacper Skonieczka        | A Method for Visualizing Multivariate Time Series Data                                                             |
 | 13.04.2023 | Weronika Dyszkiewicz, Antoni Chudy, Krzysztof Kłopotowski | missMDA: A Package for Handling Missing Values in Multivariate Data Analysis                                       |
-| 18.05.2023 | Zuzanna Glinka, Malwina Wojewoda, Laura Hoang             | Deducer: A Data Analysis GUI for R                                                                                 |
+| 20.04.2023 | Zuzanna Glinka, Malwina Wojewoda, Laura Hoang             | Deducer: A Data Analysis GUI for R                                                                                 |
 | 18.05.2023 | Kinga Frańczak, Marcel Witas                              | New Approaches in Visualization of Categorical Data: R Package extracat                                            |
 | 25.05.2023 | Grzegorz Pióro, Ziemowit Głowaczewski                     | fitdistrplus: An R Package for Fitting Distributions                                                               |
 | 25.05.2023 | Iza Danielewska, Paweł Drągowski, Mateusz Madej           | Interactive Dendrograms: The R Packages idendro and idendr0                                                        |
