@@ -65,7 +65,7 @@
     <td rowspan="4">4</td>
     <td rowspan="4">16.03</td>
     <td rowspan="4">EDA &amp; AutoEDA</td>
-    <td rowspan="4">Reprodukowalność wyników.</td>
+    <td rowspan="4"><a href= https://rstudio.github.io/renv/articles/renv.html target="_blank" rel="noopener noreferrer">Reprodukowalność wyników.</a></td>
     <td rowspan="4">Konsultacje.</td>
   </tr>
   <tr>
@@ -92,7 +92,7 @@
     <td rowspan="4">30.03</td>
     <td rowspan="4">Znajomość pakietów z rodziny tidyverse - część 2.</td>
     <td rowspan="4">Ćwieczenia tidyverse.</td>
-    <td rowspan="4">Oddanie P1.2</td>
+    <td rowspan="4"></td>
   </tr>
   <tr>
   </tr>
@@ -103,9 +103,9 @@
   <tr>
     <td rowspan="4">7</td>
     <td rowspan="4">06.04</td>
-    <td rowspan="4">Prezentacje studenckie.</td>
-    <td rowspan="4">Tworzenie pakietów R - część 1.</td>
-    <td rowspan="4">Konsultacje.</td>
+    <td rowspan="4"> </td>
+    <td rowspan="4"> </td>
+    <td rowspan="4"> </td>
   </tr>
   <tr>
   </tr>
@@ -117,8 +117,8 @@
     <td rowspan="4">8</td>
     <td rowspan="4">13.04</td>
     <td rowspan="4">Prezentacje studenckie.</td>
-    <td rowspan="4">Tworzenie pakietów R - część 2.</td>
-    <td rowspan="4">Projekt 2 - cel, wymagania, efekty.</td>
+    <td rowspan="4">Prezentacje studenckie. <br> Tworzenie pakietów R - część 2.</td>
+    <td rowspan="4">Oddanie P1.2</td>
   </tr>
   <tr>
   </tr>
@@ -131,7 +131,7 @@
     <td rowspan="4">20.04</td>
     <td rowspan="4">Praca z GitHub - zarządzanie projektem.</td>
     <td rowspan="4">Zrób swój pierwszy pakiet w R.</td>
-    <td rowspan="4">Ustalenia techniczne Projektu 2. <br>Zasady pracy.</td>
+    <td rowspan="4">Projekt 2 - cel, wymagania, efekty. Ustalenia techniczne Projektu 2. <br>Zasady pracy.</td>
   </tr>
   <tr>
   </tr>
