@@ -3,7 +3,7 @@
 Zgodnie z wylosowanym pakietem do AutoEDA i zadaniem (klasyfikacja/regresja) należy przeprowadzić analizę narzędzia. Kluczowym pytaniem jest czy pakiet posiada funkcje, 
 które pozwolą na sprawdzenie interesujących zagadnień z tabeli [*Funkcjonalności*](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/projects/projects1#funkcjonalno%C5%9Bci).
 
-W tym celu należy wypełnić załączony plik P1.2.Rmd.
+W tym celu należy wypełnić załączony plik [P1.2.Rmd](https://github.com/MI2-Education/2023L-AdvancedR/blob/main/projects/projects1/autoeda_packages/P1.2.Rmd).
 
 #### Oddanie 
 
