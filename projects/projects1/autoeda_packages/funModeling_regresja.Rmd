@@ -1,0 +1,675 @@
+---
+title: "Projekt 1.2"
+author: "Tymoteusz Kwieciński"
+date: '`r Sys.Date()`'
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Pakiet: funModeling
+
+# Zadanie: regression
+
+## Description
+
+The package should cover most of the topics connected to exploratory
+data analysis, data preparation, and model performance. It is connected
+to the *Live Book* <https://livebook.datascienceheroes.com/>, and those
+two elements are meant to be sufficient tools for the mentioned topics.
+
+However, as it turns out, the package and the book are not the best
+solutions to those problems, yet they still contain interesting
+functions and some introduction to Exploratory Data Analysis.
+
+```{r}
+library(funModeling)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(forcats)
+#load libraries and my file
+wine_data <- read.csv("../dataset/KwiecinskiTymoteusz/regression.csv")
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+The library provides a dataset about some heart diseases. It contains
+some data about patients and their symptoms. The final column describes
+whether a patient suffers from heart disease or not.
+
+Additionally, it contains some smaller datasets with fewer features
+and/or observations - but each of them should be more naturally used as
+a dataset with a categorical target.
+
+Therefore, to present the library's capabilities, I will use a different
+column as a target feature.
+
+The dataset comes from:
+<https://archive.ics.uci.edu/ml/datasets/Heart+Disease>
+
+Unfortunately, we cannot use this dataset since it is not meant for
+regression. That is why I will use a different dataframe that I scraped
+from the *Vivino* website. On this website, you can find ratings of many
+other wines worldwide. The target feature in the given dataset is the
+column `Rating`, an average of users' rates for the specified wine.
+
+```{r}
+print(head(wine_data))
+
+```
+
+#### Variable types
+
+```{r}
+status(wine_data)
+```
+
+The function provides insight not only into the types of variables but
+also gives information about missing data and the number of unique
+values. Everything is summarised in a tidy output describing the
+properties of each feature.
+
+The `wine_data` dataset contains 17 features, including target -
+`Rating`. There exist some values that need to be added, although the
+majority of data is present.
+
+The summary allows us to easily identify columns with many `NA` values,
+for instance, `sweetness` or ID-like ones - `X`. Even though intuition
+tells otherwise `Wine.ID` and `Wine` might not necessarily be all
+unique - $\frac{1}{3}$ of the values are unrepeatable.
+
+#### Dimensions
+
+not sure if there exists any function that provides the desired output,
+but we can use the usual `dim` function.
+
+```{r}
+dim(wine_data)
+
+```
+
+The dataframe contains a relatively small number of observations.
+
+#### Other info
+
+```{r}
+di=data_integrity(wine_data)
+
+# returns a summary
+summary(di)
+
+```
+
+Function data_integrity combined with the summary function returns a
+handy and compressed output containing information on which columns
+contain NA values and which features have greater cardinality. The
+output simply contains columns that need some closer examination.
+
+Function data_integrity returns an 'integrity' object; it contains much
+more insight about the columns in the specified types.
+
+The output suggests which columns we should investigate more. Variable
+`has_valid_ratings` should probably be dropped as it has only one value.
+There are some columns with high cardinality and numerical variables
+with `NA` values.
+
+```{r}
+print(di)
+
+```
+
+Full description retrieved from the `data_integrity` function provides
+information about all types of columns.
+
+Some variables could be converted into different formats. For instance -
+column `Year` is denoted as a `character` value, yet it is obviously a
+number.
+
+#### Compare datasets
+
+```{r}
+
+a=wine_data
+b=wine_data
+a=subset(a, num_review > 45)
+b=subset(b, num_review < 50)
+
+res=compare_df(a, b, c('Wine', 'num_review', 'Year'))
+# Print the keys that didn't match
+# Accessing the keys not present in the first data frame
+head(res$rows_not_in_X)
+# Accessing the keys not present in the second data frame
+head(res$rows_not_in_Y)
+# Accessing the keys which coincide completely
+head(res$coincident)
+# Accessing the rows whose values did not coincide
+# res$different_values - provided in the description although not present in the package
+```
+
+Function describes the different kinds of observations in the compared
+dataframes. Returns a list with 3 elements containing observations that
+are common for both dataframes and which are present in the first, or
+the second one. The comparison is made based on the given key column
+names or simply every feature in the observations.
+
+It is noticeable that there are multiple wines with the same name or ID
+number but different `Year`. It probably means that the user rating
+depends on the production year of the wine.
+
+### Validity
+
+#### Missing values
+
+```{r}
+status(wine_data)
+```
+
+Described above in the section about variable types.
+
+#### Redundant col.
+
+```{r}
+print(":(")
+```
+
+One could say that the function `compare_df` or `v_compare` could be
+used to detect redundant columns, but these only take two vectors and
+execute comparisons between them. The package doesn't provide any
+sensible solution to this problem.
+
+#### Outliers
+
+```{r}
+
+tukey_outlier(wine_data$num_review)
+
+```
+
+The function `tukey_outlier` calculates the outlier threshold using the
+Inter-quartile range.
+
+```{r}
+
+hampel_outlier(wine_data$num_review, k_mad_value = 3)
+
+```
+
+This more complicated function calculates a threshold outside which
+outliers could be placed. `NA` values are automatically excluded. Uses
+the *Hampel* algorithm. More information about:
+<https://livebook.datascienceheroes.com/data-preparation.html#how_to_deal_with_outliers_in_r>
+
+Unfortunately doesn't work for categorical variables (doesn't flag
+variables with high cardinality).
+
+#### Atypical values
+
+```{r}
+print(":(")
+```
+
+As far as I know, the package doesn't provide any other atypical values
+detection.
+
+However, function `freq` may be used to solve the problem of high
+cardinality, as it can be used to remove categories with small number of
+observations:
+
+```{r}
+country_freq <- freq(wine_data, 'Country', plot = F)
+
+# country_freq is ordered by frequency
+country_freq[1:3,]
+countries <- country_freq[1:3, "Country"]
+
+limited_countries_df = wine_data %>% mutate(Country = ifelse(Country %in% countries, Country, 'Other'))
+
+freq(limited_countries_df, "Country")
+```
+
+Ordering the unique values by frequency is quite handy; it allows us to
+eliminate the remaining, probably less informative categories.
+
+More about it in the bar plot category.
+
+#### Level encoding
+
+```{r}
+print(":(")
+```
+
+The package `funModeling` doesn't provide a solution to this problem,
+although it is recommended by the autors to use the package `caret`,
+which provides a thriving way to encode categorical values.
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+profiling_num(wine_data)
+```
+
+Gives a detailed desctiption of numerical variables. Output is much more
+detailed than the one from basic functions.
+
+Calculates skewness, percentiles and many other standard statistical
+measures.
+
+Works well with *pipe* - the output can be grouped and modified for
+instance by `dplyr` package.
+
+What could be done better in the given function is the clarity of the
+output - in the given example there are many numbers written in the
+scientific notation, which makes it difficult to quickly skim through
+the numbers.
+
+#### Histograms
+
+```{r}
+wine_data %>% plot_num(bins = 30)
+```
+
+A beautiful function that plots everything that we need - it has an
+option of using a different number of bins, as well as is capable of
+exporting the output into the file.
+
+#### Other dist. plots
+
+```{r}
+print(":(")
+```
+
+#### Bar plots
+
+```{r}
+limited_countries_df %>% select(Country, Year, Rating, price) %>% freq()
+
+```
+
+Function `freq` calculates the frequency of the categorical variables.
+It creates a summary dataframe for each of the non-numerical columns and
+then has the option to plot them aesthetically.
+
+What is a minus? Function parameters are not adjustable - it is
+prohibited to plot variables with more than `100` categories, and it can
+generate an enormous output, which is difficult to handle.
+
+#### QQ plots
+
+```{r}
+print(":(")
+
+#qqnorm(wine_data$Rating)
+```
+
+### Bivar.
+
+#### Descriptive stat.
+
+```{r}
+numeric_wine_data <- select_if(wine_data, is.numeric) 
+
+var_rank_info(numeric_wine_data, "Rating")
+```
+
+The function calculates several metrics related to information theory
+between columns and a given target. The calculated metrics are entropy
+(en), mutual information (mi), information gain (ig) and gain ratio
+(gr). Variable names are ordered by gain ratio metric.
+
+```{r}
+infor_magic(wine_data$price, wine_data$Rating)
+
+```
+
+There are some other functions calculating the same metrics but for a
+two vectors, or for simply evaluating the chosen metric only.
+
+```{r}
+information_gain(wine_data$price, wine_data$Rating)
+```
+
+#### Correlation matrix
+
+```{r}
+print(":(")
+```
+
+#### 1 vs each corr.
+
+```{r}
+correlation_table(wine_data, 'Rating')
+```
+
+The function calculates a correlation table (Pearson coefficient) for
+all numerical columns compared to the given target column (if target
+column isn't numerical, it will be converted to one).
+
+Lacks different correlation coefficients.
+
+#### Time-dependency
+
+```{r}
+print(":(")
+```
+
+#### Bar plots by target
+
+```{r}
+cross_plot(limited_countries_df, input="Country", target="is_natural")
+```
+
+Target has to be categorical in this case. Not very useful in our
+regression case.
+
+#### Num. plots by target
+
+```{r}
+di <- data_integrity(wine_data)
+na_num_cols <- di$results$vars_num_with_NA$variable
+
+df_na_rm <- limited_countries_df %>% mutate_at(vars(na_num_cols), ~replace_na(.,mean(., na.rm = TRUE)))
+
+
+coord_plot(df_na_rm, group_var = "Country", group_func = function(x) mean(x, na.rm=TRUE))
+```
+
+The variable that the values are grouped by has to be categorical. The
+generated plot could be pretty informative. It gives much more insight
+when the target value is categorical.
+
+Scaling options are insufficient because, in some cases, non-intuitive
+and erroneous conclusions can be drawn from this chart - `0` in `Rating`
+column should not represent the actual minimum of the variable, which is
+`3`.
+
+```{r}
+plotar(wine_data, input = "price", target = "Rating", plot_type = "histdens")
+```
+
+Plotar works for categorical target only.
+
+#### Scatter plots
+
+```{r}
+print(":(")
+```
+
+#### Contigency tables
+
+```{r}
+print(":(")
+```
+
+#### Other stats. (factor)
+
+```{r}
+desc_groups(limited_countries_df, group_var = "Country", group_func = median) %>%
+  mutate(Country = fct_reorder(Country, desc(-Rating))) %>%  ggplot(aes(y=Country, x=Rating)) + geom_bar(stat = "identity") + 
+  labs(title = "Average wine rating from different countries") 
+  #coord_cartesian(xlim = c(3, 5)) 
+```
+
+Aggregates every numerical column by the function passed as a parameter
+`group_func`; groups are selected based on the parameter `group_var`
+
+```{r}
+desc_groups_rank(limited_countries_df, group_var = "Country")
+```
+
+Describes how averages from every category (specified in `group_var`
+parameter) are ranked. Behaves similarly to the `desc_group` function.
+
+`group_var` has to be categorical.
+
+### Multivar.
+
+#### PCA
+
+```{r}
+
+ data_integrity_model(data=wine_data, model_name="pca")
+
+```
+
+Provides only a suggestion of which columns contain invalid types or
+missing data to use a certain model - one of which could be PCA.
+
+#### Stat. models
+
+```{r}
+print(":(")
+```
+
+The only function connected anyhow to statistical models in the given
+package is `data_integrity_model` which provides some information on
+which variables should be transformed in order to use the chosen model
+on the dataset.
+
+When it comes to binary target, there are some functions providing some
+more advanced calculations, for instance `gain_lift` that plots the
+*gain curve* and the lift chart. A little bit more information about the
+methodology and usage of this function can be found here:
+<https://livebook.datascienceheroes.com/model-performance.html#scoring_data>
+
+#### PCP
+
+```{r}
+print(":(")
+```
+
+### Transform.
+
+#### Imputation
+
+```{r}
+print(":(")
+```
+
+#### Scaling
+
+```{r}
+new_sweetness <- range01(wine_data$sweetness)
+
+head(new_sweetness, 3)
+
+```
+
+Scales one selected variable into the [0, 1] range. Removes all `NA`
+values - those are not taken into account.
+
+It could take more parameters and scale multiple variables at once.
+
+#### Skewness
+
+```{r}
+print(":(")
+```
+
+#### Outlier treatment
+
+```{r}
+data_prep = prep_outliers(data = wine_data, input = c('price','num_review'), method = "tukey", type='stop')
+
+print(paste0("Min price in the original dataset: ", min(wine_data$price), ", max price: ", max(wine_data$price)))
+print(paste0("Min price in the prep dataset: ", min(data_prep$price), ", max price: ", max(data_prep$price)))
+
+```
+
+Outlier treatment is done using functions defining the outlier
+threshold - `tukey`, `hampel` or `bottom_top` method. Function
+`prep_outliers`, imputes the outliers based on the method and threshold.
+The imputation methods are simple - `stop` replaces outliers with the
+threshold values and `set_na` replaces them with `NA`.
+
+#### Binning
+
+```{r}
+bins_wine_data <- discretize_get_bins(wine_data, n_bins=5)
+binned_wine_data <- discretize_df(wine_data, bins_wine_data)
+
+freq(binned_wine_data$price)
+```
+
+The package provides some robust functions capable of binning numerical
+variables.
+
+The workflow of converting numerical columns into categorical is
+following. Firstly intervals into which the selected variables will be
+divided are generated. This can be done using the function
+`discretize_get_bins` which returns selected variable names and
+intervals separated with `|` sign.
+
+Later, the `discretize_df` function can be used, which returns a
+dataframe with column data converted according to the results of the
+previous function.
+
+All of this can be also done with the wrapper function
+`convert_df_to_categoric`, which combines the operations of the function
+described above.
+
+Another way of binning provided by the package is using the function
+`discretize_rgr`, which discretizes the given numeric vector by
+maximizing the gain ratio between each bucket and the target variable.
+Unfortunately, the function supports the categorical target variables.
+
+#### Merging levels
+
+```{r}
+print(":(")
+```
+
+### Reporting
+
+#### Reports
+
+```{r}
+print(":(")
+```
+
+The package doesn't provide any kind of summary or report containing
+grouped information.
+
+#### Saving outputs
+
+```{r}
+
+plt <- coord_plot(df_na_rm, group_var = "Country", group_func = function(x) mean(x, na.rm=TRUE), print_table = FALSE)
+
+plt <- plot(sin, -pi, 2*pi)
+
+export_plot(plt, path_out = ".", file_name = "plot.jpg")
+
+```
+
+All of the generated plots can be saved into the file.
+
+Saving different types of outputs is not supported by the package, but
+it turns out exporting plot is not well handled. I couldn't produce any
+satisfying results with plotting functions from the package.
+
+Some of the plot functions that are in the package have also an option
+to automatically export the plot image.
+
+### General description and opinion
+
+To sum up, the package `funModeling` offers some great solutions, but
+there is a lot of room for improvement in this package - below are some
+of the most significant observations that I made during the
+investigation of this package.
+
+Pros:
+
+-   descriptive summaries of multiple variables: `data_integrity`,
+    `status` and `var_rank_info` - plotting functions `freq`, `plotar`
+    and `coord_plot`
+
+-   bivariate descriptions connected to the information theory
+
+-   binning functions are fine but could be more diversified
+
+-   does not reinvent the wheel, recreating well known functions from
+    different packages
+
+Cons:
+
+-   non-uniform and unintuitive function naming - why plotting functions
+    are named `plotar`, `coord_plot` and `freq` or `gain_lift`
+
+-   non-uniform parameters - some functions have more parameters whilst
+    the others don't, even though they could - missing option to export
+    plot for `coord_plot`
+
+-   unintuitive outputs - some functions primarily are meant to plot
+    with an option to produce a numerical summary, but the primarily
+    function of the others is to return the summary and have an option
+    to plot the output - many functions supports only binary target
+
+-   lack of documentation and representative examples - plots may be too
+    colourful, different fill style doesn't carry any information
+
+-   uses deprecated method (from `dplyr` or `ggplot2`)
+
+The package `funModeling` is meant to be a representative example of
+data preparation and other stages of predictive modeling as written in
+the package description: *Around 10% of almost any predictive modeling
+project is spent in predictive modeling, 'funModeling' and the book Data
+Science Live Book (<https://livebook.datascienceheroes.com/>) is
+intended to cover the remaining 90%: data preparation, profiling,
+selecting best variables 'dataViz', assessing model performance and
+other functions.*
+
+However, neither the book nor the package delivers what it promises
+since many topics and examples are very briefly described, and some
+functions seems to be unfinished. But all in all, as I mentioned before,
+both the package has some interesting features and the book contains a
+few better chapters.
+
+## Summary
+
+| Task type  | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|  Dataset   | Variable types        | Yes    |
+|            | Dimensions            | No     |
+|            | Other info            | Yes    |
+|            | Compare datasets      | Yes    |
+|  Validity  | Missing values        | Yes    |
+|            | Redundant col.        | No     |
+|            | Outliers              | Yes    |
+|            | Atypical values       | No     |
+|            | Level encoding        | No     |
+|  Univar.   | Descriptive stat.     | Yes    |
+|            | Histograms            | Yes    |
+|            | Other dist. plots     | No     |
+|            | Bar plots             | Yes    |
+|            | QQ plots              | No     |
+|   Bivar.   | Descriptive stat.     | Yes    |
+|            | Correlation matrix    | No     |
+|            | 1 vs each corr.       | Yes    |
+|            | Time-dependency       | No     |
+|            | Bar plots by target   | Yes    |
+|            | Num. plots by target  | Yes    |
+|            | Scatter plots         | No     |
+|            | Contigency tables     | No     |
+|            | Other stats. (factor) | No     |
+| Multivar.  | PCA                   | No     |
+|            | Stat. models          | No     |
+|            | PCP                   | No     |
+| Transform. | Imputation            | No     |
+|            | Scaling               | Yes    |
+|            | Skewness              | No     |
+|            | Outlier treatment     | Yes    |
+|            | Binning               | Yes    |
+|            | Merging levels        | No     |
+| Reporting  | Reports               | No     |
+|            | Saving outputs        | No     |
