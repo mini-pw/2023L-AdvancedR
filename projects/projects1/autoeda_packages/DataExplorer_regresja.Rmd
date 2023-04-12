@@ -1,0 +1,316 @@
+---
+title: "Projekt 1.2"
+author: "Marcel Witas"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: DataExplorer
+# Zadanie: regresja
+
+
+Package DataExplorer can help us with different tasks throughout your data exploration process.
+
+There are 3 main goals for DataExplorer: Exploratory Data Analysis (EDA), Feature Engineering, Data Reporting.
+
+```{r}
+library(DataExplorer)
+df <- read.csv("../dataset/KwiecinskiTymoteusz/regression.csv")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+I will use dataset about wine from github.
+```{r}
+print(head(df))
+```
+
+#### Variable types
+By plot_str we visualize variables with types.
+```{r}
+plot_str(df)
+```
+
+#### Dimensions
+By plot_str we visualize also dimensions.
+```{r}
+#plot_str(df)
+```
+
+#### Other info
+
+```{r}
+introduce(df)
+```
+
+We have info about: 
+rows,	columns, discrete_columns, 	
+continuous_columns, all_missing_columns	
+total_missing_values,	complete_rows	
+total_observations, memory_usage
+
+
+#### Compare datasets
+Not possible with DataExplorer
+```{r}
+
+```
+
+### Validity
+
+#### Missing values 
+We can see plot with missing values in each column, or table with number and percentage of missing in each column.
+```{r}
+#to plot:
+plot_missing(df)
+#table with number and percentage of missing in each column:
+profile_missing(df)
+```
+
+#### Redundant col.
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Outliers 
+Not possible with DataExplorer
+```{r}
+
+```
+
+
+#### Atypical values
+Not possible with DataExplorer
+```{r}
+
+```
+
+
+#### Level encoding 
+Not possible with DataExplorer
+```{r}
+
+```
+
+### Univar.
+
+#### Descriptive stat.
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Histograms 
+We can plot histograms of numerical variables.
+```{r}
+plot_histogram(df)
+```
+
+#### Other dist. plots
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Bar plots 
+We can plot barplots of categorical variables.
+```{r}
+plot_bar(df)
+```
+
+#### QQ plots
+QQ plots are provided, also by another feature.
+```{r}
+plot_qq(df$price)
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Correlation matrix 
+We can see correlation heatmap, and package handles categorical variables on correlation plots by creating dummy features.
+
+```{r}
+plot_correlation(na.omit(df), maxcat = 5L)
+```
+
+#### 1 vs each corr.   
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Time-dependency  
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Bar plots by target  
+
+Argument "with" is name of continuous feature to be summed. But here we would prefer
+mean of rating. There can also pass argument by.
+```{r}
+plot_bar(df, with = "Rating")
+plot_bar(df, by = "is_natural")
+```
+
+#### Num. plots by target 
+We may visualize the distribution of all continuous features based on target with a boxplot:
+```{r}
+plot_boxplot(na.omit(df), by = "Rating")
+```
+
+#### Scatter plots 
+Scatterplots are also possible. 
+```{r}
+plot_scatterplot(df, by = "Rating", sampled_rows = 1000L)
+```
+
+#### Contigency tables   
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Other stats. (factor)
+Not possible with DataExplorer
+```{r}
+
+```
+
+
+### Multivar.  
+
+#### PCA 
+To perform and visualize PCA:
+
+```{r}
+plot_prcomp(na.omit(df) )
+```
+
+#### Stat. models  
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### PCP        
+Not possible with DataExplorer
+```{r}
+
+```
+
+
+### Transform. 
+
+#### Imputation
+
+If you specify a number, all missing continuous values will be set to that number. If you specify a string, all missing discrete values will be set to that string. If you supply both, both types will be set.
+
+```{r}
+df2 <- set_missing(df, list(0L, "unknown"))
+```
+
+#### Scaling 
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Skewness   
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Outlier treatment  
+Not possible with DataExplorer
+```{r}
+
+```
+
+#### Binning  
+Binning is possible indirectly, fuction update_columns can do it after defining function making bins. For example:
+
+```{r}
+bin_price <- function(x) cut(x, breaks = c(0L, 30L, 60L, 90L, 120L, 500L))
+transformed_data <- update_columns(df, "price", bin_price)
+
+plot_bar(transformed_data$price)
+```
+
+#### Merging levels     
+Group bottom "threshold" (by count) to "OTHER" category.
+```{r}
+df3 <- group_category(data = df, feature = "Country", threshold = 0.2, update = TRUE)
+```
+
+### Reporting  
+
+#### Reports
+There is function to generate report, where we can pass target variable.
+
+```{r}
+#create_report(df, y = "Rating")
+```
+
+You may also customize each individual section using configure_report function.
+
+#### Saving outputs        
+Not possible with DataExplorer
+```{r}
+
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        | Yes    |
+|            | Dimensions            | Yes    |
+|            | Other info            | Yes    |
+|            | Compare datasets      | No     |
+|  Validity  | Missing values        | Yes    |
+|            | Redundant col.        | No     |
+|            | Outliers              | No     |
+|            | Atypical values       | No     |
+|            | Level encoding        | No     |
+|   Univar.  | Descriptive stat.     | No     |
+|            | Histograms            | Yes    |
+|            | Other dist. plots     | No     |
+|            | Bar plots             | Yes    |
+|            | QQ plots              | Yes    |    
+|   Bivar.   | Descriptive stat.     | No     |       
+|            | Correlation matrix    | Yes    |
+|            | 1 vs each corr.       | No     |
+|            | Time-dependency       | No     |             
+|            | Bar plots by target   | Yes    |
+|            | Num. plots by target  | Yes    |
+|            | Scatter plots         | Yes    |
+|            | Contigency tables     | No     |
+|            | Other stats. (factor) | No     |
+|  Multivar. | PCA                   | Yes    |      
+|            | Stat. models          | No     |
+|            | PCP                   | No     |
+| Transform. | Imputation            | Yes    |
+|            | Scaling               | No     |
+|            | Skewness              | No     |
+|            | Outlier treatment     | No     |
+|            | Binning               | Yes    |
+|            | Merging levels        | Yes    |
+|  Reporting | Reports               | Yes    |
+|            | Saving outputs        | No     |  
