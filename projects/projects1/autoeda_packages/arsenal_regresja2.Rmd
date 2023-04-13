@@ -1,0 +1,304 @@
+---
+title: "Projekt 1.2"
+author: "Kinga Frańczak"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: arsenal
+# Zadanie: regresja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+#library(arsenal)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+mockstudy
+
+muck_up_mockstudy()
+```
+
+#### Variable types
+
+```{r}
+
+```
+
+#### Dimensions
+
+```{r}
+
+```
+
+#### Other info
+
+```{r}
+
+```
+
+#### Compare datasets
+
+```{r}
+comparedf()
+summary(comparedf())
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+
+```
+
+#### Redundant col.
+
+```{r}
+
+```
+
+#### Outliers 
+
+```{r}
+
+```
+
+
+#### Atypical values
+
+```{r}
+
+```
+
+
+#### Level encoding 
+
+```{r}
+
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+freqlist()
+```
+
+#### Histograms 
+
+```{r}
+
+```
+
+#### Other dist. plots
+
+```{r}
+
+```
+
+#### Bar plots 
+
+```{r}
+
+```
+
+#### QQ plots
+
+```{r}
+
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+
+```
+
+#### Correlation matrix 
+
+```{r}
+
+```
+
+#### 1 vs each corr.   
+
+```{r}
+
+```
+
+#### Time-dependency  
+
+```{r}
+a <- c(rep(1,6),rep(2,6))
+b <- rep(1:6,2)
+c <- rnorm(12, 4, 1)
+d <- rnorm(12, 0, 5)
+df <- data.frame(time = a, b = b, c = c, d = d)
+
+paired(time ~ c + d, df, b, na.action = na.paired("fill")) -> p
+summary(p)
+```
+
+#### Bar plots by target  
+
+```{r}
+
+```
+
+#### Num. plots by target 
+
+```{r}
+
+```
+
+#### Scatter plots 
+
+```{r}
+
+```
+
+#### Contigency tables   
+
+```{r}
+sample(c('1','2','3'),100, replace = TRUE) -> a
+sample(c('a','b'),100, replace = TRUE) -> b
+df <- data.frame(a = a, b = b)
+
+tableby(b ~ a, df) -> x
+summary(x)
+```
+
+#### Other stats. (factor)
+
+```{r}
+
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+
+```
+
+#### Stat. models  
+
+```{r}
+
+```
+
+#### PCP        
+
+```{r}
+
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+
+```
+
+#### Scaling 
+
+```{r}
+
+```
+
+#### Skewness   
+
+```{r}
+
+```
+
+#### Outlier treatment  
+
+```{r}
+
+```
+
+#### Binning  
+
+```{r}
+
+```
+
+#### Merging levels     
+
+```{r}
+
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+
+```
+
+#### Saving outputs        
+
+```{r}
+
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   No   |
+|            | Dimensions            |   No   |
+|            | Other info            |   No   |
+|            | Compare datasets      |   Yes  |
+|  Validity  | Missing values        |   No   |
+|            | Redundant col.        |        |
+|            | Outliers              |   No   |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   No   |
+|   Univar.  | Descriptive stat.     |        |
+|            | Histograms            |   No   |
+|            | Other dist. plots     |   No   |
+|            | Bar plots             |   No   |
+|            | QQ plots              |   No   |      
+|   Bivar.   | Descriptive stat.     |        |       
+|            | Correlation matrix    |   No   |
+|            | 1 vs each corr.       |        |
+|            | Time-dependency       |   Yes  |             
+|            | Bar plots by target   |   No   |
+|            | Num. plots by target  |   No   |
+|            | Scatter plots         |   No   |
+|            | Contigency tables     |   Yes  |
+|            | Other stats. (factor) |   No   |
+|  Multivar. | PCA                   |   No   |      
+|            | Stat. models          |   Yes  |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |        |
+|            | Scaling               |        |
+|            | Skewness              |        |
+|            | Outlier treatment     |        |
+|            | Binning               |        |
+|            | Merging levels        |        |
+|  Reporting | Reports               |   No   |
+|            | Saving outputs        |   Yes  |  
