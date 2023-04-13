@@ -90,8 +90,8 @@
   <tr>
     <td rowspan="4">6</td>
     <td rowspan="4">30.03</td>
-    <td rowspan="4">Znajomość pakietów z rodziny tidyverse - część 2.</td>
-    <td rowspan="4">Ćwieczenia tidyverse.</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/projects/projects1/autoeda_packages target="_blank" rel="noopener noreferrer">Projekt 1 - pakiety AutoEDA</a> </td>
+    <td rowspan="4">Tworzenie pakietów R - część 1</td>
     <td rowspan="4"></td>
   </tr>
   <tr>

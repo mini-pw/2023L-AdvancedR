@@ -1,0 +1,255 @@
+---
+title: "Projekt 1.2"
+author: "Laura Hoang"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: visdat
+# Zadanie: classification
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# libraries
+library("visdat")
+library("plotly")
+```
+
+## What does visdat do?
+Initially inspired by [`csv-fingerprint`](https://github.com/setosa/csv-fingerprint),
+`vis_dat` helps with visualising a dataframe and "get a look at the data" by displaying the
+variable classes in a dataframe as a plot with `vis_dat`, and getting a brief
+look into missing data patterns using `vis_miss`. `visdat` is a very simple
+library containing only 6 functions.
+
+## Overview of functionalities
+
+### Dataset
+This is a set of data created for rice classification. I recommend using this
+dataset for educational purposes, for practice and to acquire the necessary
+knowledge. It is modified dataset from this resource: link Jasmine - 1, Gonen - 0.
+
+The dataset comes from:
+<https://www.kaggle.com/datasets/mssmartypants/rice-type-classification>
+
+```{r}
+df <- read.csv2('data/riceClassification.csv', sep=',')
+df[, c(3:5,7,8:11)] <- sapply(df[, c(3:5,7,8:11)], as.numeric)
+
+print(head(df))
+
+```
+
+#### Variable types
+`vis_dat()` visualises a dataframe showing you what the classes of the columns
+are, and also displaying the missing data.
+
+```{r}
+vis_dat(df, sort_type = FALSE)
+
+```
+
+#### Dimensions
+Package has no function for this property.
+
+#### Other info
+`vis_expect()` visualise where certain conditions hold true in your data.
+
+```{r}
+vis_expect(df, ~.x >= 25) 
+
+```
+
+#### Compare datasets
+`vis_compare()` visualise differences between two dataframes of the same dimensions.
+
+```{r}
+a <- df[sample(nrow(df), 100), ]
+b <- df[sample(nrow(df), 100), ]
+
+vis_compare(a,b)
+
+```
+
+### Validity
+
+#### Missing values 
+`vis_miss()` visualises just the missing data, and allows for missingness to be clustered and columns rearranged.
+
+```{r}
+vis_miss(df)
+
+```
+
+In order to check the function, NA values were artificially added to the copy of data.
+```{r}
+df2 <- df
+df2[sample(nrow(df2), 150), c(sample(ncol(df2), 10))] <- NA
+df2[sample(nrow(df2), 100), c(sample(ncol(df2), 5))] <- NA
+df2[sample(nrow(df2), 1000), c(sample(ncol(df2), 2))] <- NA
+df2[sample(nrow(df2), 100), c(sample(ncol(df2), 8))] <- NA
+
+vis_miss(df2)
+
+```
+
+
+#### Redundant col.
+Package has no function for this property.
+
+#### Outliers 
+Package has no function for this property.
+
+
+#### Atypical values
+Package has no function for this property.
+
+
+#### Level encoding 
+Package has no function for this property.
+
+### Univar.
+
+#### Descriptive stat.
+Package has no function for this property.
+
+#### Histograms 
+Package has no function for this property.
+
+#### Other dist. plots
+Package has no function for this property.
+
+#### Bar plots 
+Package has no function for this property.
+
+#### QQ plots
+Package has no function for this property.
+
+### Bivar.     
+
+#### Descriptive stat.
+Package has no function for this property.
+
+#### Correlation matrix 
+`vis_cor()` visualise the correlation of variables in a nice heatmap.
+
+```{r}
+vis_cor(df)
+```
+
+#### 1 vs each corr.   
+Package has no function for this property.
+
+#### Time-dependency  
+Package has no function for this property.
+
+#### Bar plots by target  
+Package has no function for this property.
+
+The `vis_dat()` function however, has a `facet` argument, so there is a possibility to create small multiples of a similar plot for a level of a variable.
+```{r}
+vis_dat(df, facet = Class)
+```
+
+#### Num. plots by target 
+Package has no function for this property.
+
+#### Scatter plots 
+Package has no function for this property.
+
+#### Contigency tables   
+Package has no function for this property.
+
+#### Other stats. (factor)
+Package has no function for this property.
+
+
+### Multivar.  
+
+#### PCA 
+Package has no function for this property.
+
+#### Stat. models  
+Package has no function for this property.
+
+#### PCP        
+Package has no function for this property.
+
+
+### Transform. 
+
+#### Imputation
+Package has no function for this property.
+
+#### Scaling 
+`vis_value()` visualise the value class of each cell in your data.
+```{r}
+vis_value(df)
+
+```
+
+#### Skewness   
+Package has no function for this property.
+
+#### Outlier treatment  
+Package has no function for this property.
+
+#### Binning  
+Package has no function for this property.
+
+#### Merging levels     
+Package has no function for this property.
+
+### Reporting  
+
+#### Reports
+Package has no function for this property.
+
+#### Saving outputs
+There is a possibility to make plots in visdat by wrapping them in plotly::ggplotly. Then, obtained graph can be saved / exported.
+```{r}
+# plot <- ggplotly(vis_dat(df))
+# htmlwidgets::saveWidget(plot, "plot.html")
+```
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|:---------------------:|:------:|
+|   Dataset  | Variable types        |   Yes  |
+|            | Dimensions            |   No   |
+|            | Other info            |   Yes  |
+|            | Compare datasets      |   Yes  |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
+|            | Outliers              |   No   |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   No   |
+|   Univar.  | Descriptive stat.     |   No   |
+|            | Histograms            |   No   |
+|            | Other dist. plots     |   No   |
+|            | Bar plots             |   No   |
+|            | QQ plots              |   No   |      
+|   Bivar.   | Descriptive stat.     |   No   |       
+|            | Correlation matrix    |   Yes  |
+|            | 1 vs each corr.       |   No   |
+|            | Time-dependency       |   No   |             
+|            | Bar plots by target   |   No   |
+|            | Num. plots by target  |   No   |
+|            | Scatter plots         |   No   |
+|            | Contigency tables     |   No   |
+|            | Other stats. (factor) |   No   |
+|  Multivar. | PCA                   |   No   |      
+|            | Stat. models          |   No   |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |   No   |
+|            | Scaling               |   Yes  |
+|            | Skewness              |   No   |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   No   |
+|  Reporting | Reports               |   No   |
+|            | Saving outputs        |   Yes  |

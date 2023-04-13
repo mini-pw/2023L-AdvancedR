@@ -1,0 +1,225 @@
+---
+title: "Projekt 1.2"
+author: "Jakub Piwko"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: inspectdf
+# Zadanie: klasyfikacja
+
+
+
+```{r}
+library(inspectdf)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Wstęp
+
+Pakiet 'inspectdf' to skromny pakiet do automatycznej eksploracyjnej analizy danych. Implementuje 7 funkcji, które pomagają przeanalizować podstawowe właściwości ramki danych: `inspect_types`, `inspect_num`, `inspect_cat`, `inspect_na`, `inspect_cor`, `inspect_imb`, `inspect_mem`. Funkcja `show_plot`, do której możemy podać obiekt powstały przy użyciu wspomnianych 7 funkcji analizujących tworzy odpowiedni wykres obrazujący konkretny aspekt analizy. Paczka ma także wbudowany zbiór danych o nazwie 'tech'.
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+df <- read.csv('milk.csv')
+
+```
+
+#### Variable types
+Funckja `inspect_types` służy do analizy typu zmiennych. Jak się okazuje, pakiet jako kategoryczne klasyfikuje te kolumny, które są po prostu typu character. Dodatkowo rozróżnia typ numeric i ściśliej integer. 
+```{r}
+inspect_types(df)
+inspect_types(df)$col_name
+```
+
+#### Dimensions
+Nie da się bezpośrednio pozyskać informacji o wymiarach ramki danych z użyciem tej paczki. Można te informacje wydobyć z innych funckji, ale jest to nieefektywne
+
+#### Other info
+Pakiet daje nam możliwość analizy pamięci, jaką zajmują poszczególne kolumny z użyciem funkcji `inspect_mem`
+```{r}
+inspect_mem(df)
+show_plot(inspect_mem(df))
+```
+
+#### Compare datasets
+Każda z funkcji typu inspect ma opcję podania drugiej ramki danych. Ta funkcjonalność została opracowana raczej z myślą o ramkach zawierających te same kolumny np. zbiory treningowe i testowe do modelów ML. Wtedy wyniki analizy zawierają porównanie kolumn, liczności braków danych, korelacji itd. Gdy podamy dwie niezależne ramki, dostaniemy oddzielne wyniki dla kolumn obu ramek. Gdy jakaś kolumna znajduje się w jednej ramce, a w drugiej nie, to pojawią się wartości NA.
+```{r}
+df2 <- iris
+inspect_na(df, df2)
+```
+
+### Validity
+
+#### Missing values 
+Do sprawdzania brakujących wartości w każdej kolumnie służy funckja `inspect_na`
+```{r}
+inspect_na(df)
+```
+
+#### Redundant col.
+Nie ma w tym pakiecie funkcji, która bezpośrednio sprawdza zbędne kolumny, ale może nam w tym pomóc funckja `inspect_imb', która analizuje klasę o największej liczności w zmiennych kategorycznych. Gdy zauważymy, że kardynalność jakiejś klasy jest duża (np. procentowo) to możemy podejrzewać że jest zmienna zbędna.
+```{r}
+inspect_imb(df)
+```
+
+#### Outliers & Atypical Values
+Nie ma w pakiecie funckji do wykrywania outlierów. Można zauważyć, że w naszych danych występują anomalie korzystając z funckji `inspect_num`, która zwraca krótką analizę statystyczną poszczególnych kolumn numerycznych. Podświetla te miary, które są odstające. W tym przypadku wartość minimalną i średnią zmiennje 'Odor', gdyż przyjmuje ona wartości 0, 1, a jedna obserwacja ma wartość -1342.
+```{r}
+inspect_num(df)
+```
+
+
+#### Level encoding 
+Funckja, która sprawdza levele w zmiennych kategorycznych oraz ich kardynalność to `inspect_cat`.
+```{r}
+inspect_cat(df)
+inspect_cat(df)$levels
+```
+
+### Univar.
+
+#### Descriptive stat.
+Statystyki dla zmiennych numerycznych uzyskamy z pomocą funkcji `inspect_num`
+```{r}
+inspect_num(df)
+```
+
+#### Histograms 
+Histogramy zmiennych numerycznych otrzymamy stosując funckję `show_plot` do obiektu `inspect_num`
+```{r}
+show_plot(inspect_num(df))
+```
+
+#### Other dist. plots
+Bardzo ciekawy jest wykres kołowy (POGARDA) pokazujący stosunek typów kolumn w ramce
+```{r}
+show_plot(inspect_types(df))
+```
+
+#### Bar plots 
+Barplot znalazł zastosowanie do prezentowania liczby braków danych w kolumnach i zajętości pamięci.
+```{r}
+show_plot(inspect_na(df))
+```
+```{r}
+show_plot(inspect_mem(df))
+```
+
+#### QQ plots
+
+QQ ploty nie są obsługiwane przez tę paczkę.
+
+### Bivar.     
+
+#### Descriptive stat.
+Do pozyskania informacji o wartościach korelacji służy funckja `inspect_cor`. Domyślnie porównuje ona wszystkie pary zmiennych. Można wybrać współczynnik korelacji spośród trzech typów: "pearson", "kendall" lub "spearman", domyślnie pearson. Oprócz wartości współczynnika zwraca wartość p-value dla testu o hipotezie 0 "korelacja jest równa 0" oraz przedziały ufności tego testu. 
+```{r}
+inspect_cor(df)
+```
+
+#### Correlation matrix 
+W tym pakiecie nie występuje typowa macierz korelacji. Autorzy pakietu zastosowali inny typ wykresu - prezentujący współczynnik korelacji z jego przedziałem ufności.
+```{r}
+show_plot(inspect_cor(df))
+```
+
+#### 1 vs each corr.   
+Aby ograniczyć się do wyznaczania współczynników w odniesieniu do jednej konkretnej zmiennej, należy dodać do funkcji `inspect_cor` parametr 'with_col'.
+```{r}
+inspect_cor(df, with_col='Fat')
+```
+
+#### Time-dependency  
+
+Pakiet nie obsługuje analizy zależności z czasem.
+
+#### Bar plots by target & Num. plots by target
+
+Pakiet nie daje możliwości wykonywania wykresów, które uwzględniałyby grupowanie po zmiennej celu.
+
+#### Scatter plots 
+
+Pakiet nie daje możliwości wykonywanie scatter plotów
+
+#### Contigency tables   
+
+Pakiet nie daje możliwości liczenia tablicy kondyngencji
+
+#### Other stats. (factor)
+Dodatkowym elementem analizy może być informacja o levelach z największą kardynalnością w każdej kolumnie kategorycznej z użyciem funkcji `inspect_imb`
+```{r}
+inspect_imb(df)
+```
+
+
+### Multivar.  
+
+#### PCA 
+#### Stat. models  
+#### PCP        
+
+Pakiet nie obsługuje żadnych funkcjonalności do redukcji wymiarów ani budowania modeli. 
+
+
+### Transform. 
+
+#### Imputation
+#### Scaling 
+#### Skewness   
+#### Outlier treatment  
+#### Binning  
+#### Merging levels     
+### Reporting  
+#### Reports
+#### Saving outputs        
+
+Pakiet nie daje możliwości transformowania zmiennych. Nie zawiera też funkcji do radzenia sobie z outlierami, skośnymi rozkładami itd. 
+
+Tworzenie raportów i zapisywanie wyników odbywać się może wyłącznie z użyciem zewnętrznych funckji i pakietów, jako że sam pakiet inspectdf nie obsługuje tej funckjonalności.
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |    +   |
+|            | Dimensions            |    -   |
+|            | Other info            |    +   |
+|            | Compare datasets      |    +   |
+|  Validity  | Missing values        |    +   |
+|            | Redundant col.        |    -   |
+|            | Outliers              |    +   |
+|            | Atypical values       |    +   |
+|            | Level encoding        |    +   |
+|   Univar.  | Descriptive stat.     |    +   |
+|            | Histograms            |    +   |
+|            | Other dist. plots     |    +   |
+|            | Bar plots             |    +   |
+|            | QQ plots              |    -   |      
+|   Bivar.   | Descriptive stat.     |    +   |       
+|            | Correlation matrix    |    +   |
+|            | 1 vs each corr.       |    -   |
+|            | Time-dependency       |    -   |             
+|            | Bar plots by target   |    -   |
+|            | Num. plots by target  |    -   |
+|            | Scatter plots         |    -   |
+|            | Contigency tables     |    -   |
+|            | Other stats. (factor) |    +   |
+|  Multivar. | PCA                   |    -   |      
+|            | Stat. models          |    -   |
+|            | PCP                   |    -   |
+| Transform. | Imputation            |    -   |
+|            | Scaling               |    -   |
+|            | Skewness              |    -   |
+|            | Outlier treatment     |    -   |
+|            | Binning               |    -   |
+|            | Merging levels        |    -   |
+|  Reporting | Reports               |    -   |
+|            | Saving outputs        |    -   |  
