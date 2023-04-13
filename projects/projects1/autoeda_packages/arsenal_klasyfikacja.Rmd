@@ -1,0 +1,353 @@
+---
+title: "Projekt 1.2"
+author: "Szymon Gut"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: arsenal
+# Zadanie: klasyfikacja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+library(arsenal)
+library(coin)
+library(pROC)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Quick summarise
+The package did not include most of the functionality that we needed to check. It doesn't seem to be very helpful and the documentation was not exhaustive either. Every time I wrote ':(' it means that the package does not have the requested functionality and unfortunately, I had to do this for almost every occasion.
+
+## Overview of functionalities
+
+### Dataset Name: mockstudy
+The library provides a dataset with mock clinical study data. It contains
+some data about patients. 
+
+**Number of Rows:** 1499
+
+**Number of Columns:** 14
+
+---
+
+### Variables:
+
+- case: a numeric identifier for each patient in the study
+- age: the age of the patient in years
+- arm: treatment arm divided into 3 groups (character string)
+- sex: a factor with levels Male and Female
+- race: self-reported race/ethnicity (character string)
+- fu.time: survival or censoring time in years
+- fu.stat: censoring status; 1=censor, 2=death
+- ps: integer, ECOG performance score
+- hgb: numeric, hemoglobin count
+- bmi: numeric, body mass index, kg/m^2
+- alk.phos: numeric, alkaline phosphatase
+- ast: numeric, aspartate transaminase
+- mdquality.s: integer, LASA QOL 0=Clinically Deficient, 1=Not Clinically Deficient
+- age.ord: an ordered factor split of age, with levels 10-19 < 20-29 < 30-39 < 40-49 < 50-59 < 60-69 < 70-79 < 80-89
+```{r}
+df <- mockstudy
+print(head(df))
+```
+
+#### Variable types
+
+```{r}
+str(df)
+```
+Package does not support such functionality :(
+
+#### Dimensions
+Package does not support such functionality :(
+```{r}
+dim(df)
+```
+
+#### Other info
+
+```{r}
+fl <- freqlist(~sex + arm + race +ps, data = df)
+summary(fl)
+```
+We can check frequency of categorical variables, where we can see frequency of all values, cumulative frequency etc.
+
+#### Compare datasets
+
+To compare two data sets and find differences between them we can use  comparedf() function which takes two required parameters (data sets to compare).
+```{r}
+a=df
+b=df
+a=subset(a, age.ord == "60-69")
+b=subset(b, age.ord == "50-59")
+summary(comparedf(a, b))
+```
+
+### Validity
+
+#### Missing values 
+We can check missing values with `allNA` function which returns TRUE if vector contains only missing values and FALSE if contains at least one not NA value. There is also another function `includeNA` which replaces NA values with value specified by the user.
+
+```{r}
+allNA(c(NA, NA, NA, NA)) #return true if all variables are Na
+allNA(c(NA, NA, 1, NA)) # return false if any variable different from NA
+
+vector_with_some_na <- c(10, 25, NA, 100, NA)
+includeNA(vector_with_some_na, label = 0) #replace NA values to specified by user in this example to 0
+```
+
+#### Redundant col.
+
+```{r}
+summary(modelsum(mdquality.s ~ age + bmi, data=mockstudy, adjust=~case+sex+race, family=binomial, binomial.stats=c("OR", "CI.lower.OR", "CI.upper.OR", "p.value", "concordance", "Nmiss", "AIC")))
+```
+We can check which column is redundant comparing AIC score. There is also possible to add logLik or BIC score.
+
+#### Outliers 
+```{r}
+print(":(")
+```
+Package does not have any function for outlier detection. It must be done with usage of base function or functions from other packages.
+
+
+
+#### Atypical values
+
+```{r}
+fl <- freqlist(~sex + arm + race + ps, data = df)
+summary(fl)
+```
+We can check atypical values by freqlist evaluation. If there are any rare values there, we will see it in the frequency table.
+
+#### Level encoding 
+
+```{r}
+print(":(")
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+print(":(")
+```
+
+#### Histograms 
+```{r}
+print(":(")
+```
+Package does not support any plots :((
+
+#### Other dist. plots
+
+```{r}
+print(":(")
+```
+
+#### Bar plots 
+
+```{r}
+print(":(")
+```
+
+#### QQ plots
+
+```{r}
+print(":(")
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+print(":(")
+```
+
+#### Correlation matrix 
+
+```{r}
+print(":(")
+```
+
+#### 1 vs each corr.   
+
+```{r}
+print(":(")
+```
+
+#### Time-dependency  
+
+```{r}
+df$tp = paste0("Time Point ", rep(c(1, 2), length.out=1499))
+df$id = c(1:750, 750:2)
+p <- paired(tp ~ arm + sex + race, data = df, id = id, na.action = na.paired("fill"))
+summary(p)
+```
+We can easily compare data if it changes over time. We just need to pass data where we have some observation in timePoint1 and same observations in timePoint2 and as a result we get a comparison of the data over time. It requires special type of data so this example is not that smart but it should be useful in many cases when data specification is appropriate.
+
+#### Bar plots by target  
+
+```{r}
+print(":(")
+```
+Package does not support any plots :((
+
+#### Num. plots by target 
+
+```{r}
+print(":(")
+```
+
+#### Scatter plots 
+
+```{r}
+print(":(")
+```
+
+#### Contigency tables   
+
+```{r}
+tb <- tableby(arm~sex, data = df)
+summary(tb)
+```
+Package supports contigency table and results are presented above. We get number of occurrences, total number of occurrences.
+
+#### Other stats. (factor)
+
+```{r}
+print(":(")
+```
+Not supported in this package :(
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+print(":(")
+```
+Not supported in this package :(
+
+#### Stat. models  
+
+```{r}
+modelsum(mdquality.s ~ age + bmi, data=df, adjust=~case+sex+race, family=binomial, binomial.stats=c("OR", "CI.lower.OR", "CI.upper.OR", "p.value", "concordance", "Nmiss", "AIC"))
+```
+we can specify which model do we want. There are possible models like: `ordinal: Ordinal logistic regression models`, `binomial,quasibinomial: Logistic regression models`, `gaussian: Linear regression models`, `poisson, quasipoisson: Poisson regression models`, `negbin: Negative binomial regression models`, `clog: Conditional Logistic models`, `survival: Cox models`
+
+#### PCP        
+
+```{r}
+print(":(")
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+print(":(")
+```
+
+#### Scaling 
+
+```{r}
+print(":(")
+```
+
+#### Skewness   
+
+```{r}
+print(":(")
+```
+
+#### Outlier treatment  
+
+```{r}
+print(":(")
+```
+
+#### Binning  
+
+```{r}
+print(":(")
+```
+
+#### Merging levels     
+
+```{r}
+print(":(")
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+print(":(")
+```
+
+#### Saving outputs 
+The package comes with a write2 function that can be used to output
+tables to a HTML, PDF or a Word file. However I couldn't get it to work though
+(it would always generate an empty file without showing any errors)
+
+
+```{r}
+tab2 <- modelsum(alk.phos ~ arm + ps + hgb, adjust= ~ age + sex, family = "gaussian", data = mockstudy)
+
+write2pdf(
+  tab2, "modelsum.pdf", quiet = TRUE,
+  title = "My test table", # passed to summary.modelsum
+  show.intercept = FALSE,  # passed to summary.modelsum
+  digits = 5               # passed to summary.modelsum
+)
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        | No     |
+|            | Dimensions            | No     |
+|            | Other info            | Yes    |
+|            | Compare datasets      | Yes    |
+|  Validity  | Missing values        | Yes    |
+|            | Redundant col.        | Yes    |
+|            | Outliers              | No     |
+|            | Atypical values       | Yes    |
+|            | Level encoding        | No     |
+|   Univar.  | Descriptive stat.     | No     |
+|            | Histograms            | No     |
+|            | Other dist. plots     | No     |
+|            | Bar plots             | No     |
+|            | QQ plots              | No     |      
+|   Bivar.   | Descriptive stat.     | No     |       
+|            | Correlation matrix    | No     |
+|            | 1 vs each corr.       | No     |
+|            | Time-dependency       | Yes    |             
+|            | Bar plots by target   | No     |
+|            | Num. plots by target  | No     |
+|            | Scatter plots         | No     |
+|            | Contigency tables     | Yes    |
+|            | Other stats. (factor) | No     |
+|  Multivar. | PCA                   | No     |      
+|            | Stat. models          | Yes    |
+|            | PCP                   | No     |
+| Transform. | Imputation            | No     |
+|            | Scaling               | No     |
+|            | Skewness              | No     |
+|            | Outlier treatment     | No     |
+|            | Binning               | No     |
+|            | Merging levels        | No     |
+|  Reporting | Reports               | No     |
+|            | Saving outputs        | Yes    |  

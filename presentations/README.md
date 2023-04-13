@@ -1,3 +1,17 @@
+| Termin     | Prezentujący                                              | Tytuł                                                                                                              |
+|------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| 23.03.2023 | Tymoteusz Kwieciński, Marta Szuwarska                     | Expanding Tidy Data Principles to Facilitate Missing Data Exploration, Visualization and Assessment of Imputations |
+| 13.04.2023 | Jakub Piwko, Dominik Kędzierski, Kacper Skonieczka        | A Method for Visualizing Multivariate Time Series Data                                                             |
+| 13.04.2023 | Weronika Dyszkiewicz, Antoni Chudy, Krzysztof Kłopotowski | missMDA: A Package for Handling Missing Values in Multivariate Data Analysis                                       |
+| 20.04.2023 | Zuzanna Glinka, Malwina Wojewoda, Laura Hoang             | Deducer: A Data Analysis GUI for R                                                                                 |
+| 18.05.2023 | Kinga Frańczak, Marcel Witas                              | New Approaches in Visualization of Categorical Data: R Package extracat                                            |
+| 25.05.2023 | Grzegorz Pióro, Ziemowit Głowaczewski                     | fitdistrplus: An R Package for Fitting Distributions                                                               |
+| 25.05.2023 | Iza Danielewska, Paweł Drągowski, Mateusz Madej           | Interactive Dendrograms: The R Packages idendro and idendr0                                                        |
+
+
+
+### Artykuły 
+
 Epskamp, S., Cramer, A. O., Waldorp, L. J., Schmittmann, V. D., & Borsboom, D. (2012). qgraph: Network Visualizations of Relationships in Psychometric Data. _Journal of Statistical Software_, _48_(4), 1–18. https://doi.org/10.18637/jss.v048.i04
 
 Nordhausen, K., Oja, H., & Tyler, D. E. (2008). Tools for Exploring Multivariate Data: The Package ICS. _Journal of Statistical Software_, _28_(6), 1–31. https://doi.org/10.18637/jss.v028.i06
