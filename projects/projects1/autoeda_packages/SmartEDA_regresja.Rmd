@@ -1,0 +1,290 @@
+---
+title: "Projekt 1.2"
+author: "Krzysztof Kłopotowski"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: SmartEDA
+# Zadanie: regresja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+data <- read.csv('dream_market_cocaine_listings.csv', header = TRUE)
+library(SmartEDA)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+```
+
+#### Variable types
+
+```{r}
+ExpData(data = data, type = 1)[3:8, ]
+# ORAZ
+ExpData(data = data, type = 2)[,2:3]
+```
+
+#### Dimensions
+
+```{r}
+ExpData(data = data, type = 1)[1:2, ]
+```
+
+#### Other info
+
+```{r}
+ExpData(data = data, type = 1)
+# LUB
+ExpData(data = data, type = 2)
+```
+
+#### Compare datasets
+
+```{r}
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+ExpData(data = data, type = 2)[, c(2,5,6)]
+```
+
+#### Redundant col.
+
+```{r}
+ExpData(data = data, type = 1)[9, ]
+# ORAZ
+ExpData(data = data, type = 2)[, c(2,7)]
+```
+
+#### Outliers 
+
+```{r}
+ExpOutliers(data, varlist = c("btc_price","successful_transactions"), method = "boxplot",  treatment = "mean", capping = c(0.1, 0.9))
+# LUB
+ExpOutliers(data, varlist = c("btc_price","successful_transactions"), method = "3xStDev",  treatment = "median", capping = c(0.1, 0.9))
+```
+
+
+#### Atypical values
+
+```{r}
+```
+
+
+#### Level encoding 
+
+```{r}
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+ExpNumStat(data,by="A",gp=NULL,Qnt=seq(0,1,0.1),MesofShape=2,Outlier=TRUE,round=2, Nlim=10)
+# dla zmiennych kategorycznych
+ExpCTable(data,Target=NULL,margin=1,clim=10,round=2,bin=4,per=F)
+# PS: czemu Target akurat w tej funkcji jest z wielkiej litery AAAA
+```
+
+#### Histograms 
+
+```{r}
+```
+
+#### Other dist. plots
+
+```{r}
+ExpNumViz(data,target=NULL,nlim=4,scatter=FALSE,fname=NULL,col="green",Page=c(2,2),sample=8)
+```
+
+#### Bar plots 
+
+```{r}
+# niestety ta ramka danych ma tylko 1. zm. kat. :s
+ExpCatViz(data,target=NULL,col ="slateblue4",clim=10,margin=2)
+```
+
+#### QQ plots
+
+```{r}
+ExpOutQQ(data,nlim=10,fname=NULL,Page=c(2,2),sample=4)
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+ExpNumStat(data,by="A",gp="cost_per_gram",Qnt=seq(0,1,0.1),MesofShape=1,Outlier=TRUE,round=2)
+# dla zmiennych kategorycznych
+ExpCTable(data,Target="cost_per_gram",margin=1,clim=10,round=2,bin=4,per=F)
+```
+
+#### Correlation matrix 
+
+```{r}
+```
+
+#### 1 vs each corr.   
+
+```{r}
+```
+
+#### Time-dependency  
+
+```{r}
+```
+
+#### Bar plots by target  
+
+```{r}
+# niestety ta ramka danych ma tylko 1. zm. kat. :s
+ExpCatViz(data, margin = 2, target = "escrow", 
+          col = c("red","green"))
+```
+
+#### Num. plots by target 
+
+```{r}
+ExpNumViz(data,target="cost_per_gram",nlim=4,scatter=FALSE,fname=NULL,col="green",Page=c(2,2),sample=8)
+```
+
+#### Scatter plots 
+
+```{r}
+ExpNumViz(data, scatter = TRUE)
+```
+
+#### Contigency tables   
+
+```{r}
+```
+
+#### Other stats. (factor)
+
+```{r}
+ExpParcoord(data,Group=NULL,Stsize=NULL,Nvar=c("grams","quality","btc_price","rating"))
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+```
+
+#### Stat. models  
+
+```{r}
+```
+
+#### PCP        
+
+```{r}
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+```
+
+#### Scaling 
+
+```{r}
+```
+
+#### Skewness   
+
+```{r}
+ExpSkew(data, type = 'moment')
+ExpSkew(data, type = 'sample')
+```
+
+#### Outlier treatment  
+
+```{r}
+```
+
+#### Binning  
+
+```{r}
+```
+
+#### Merging levels     
+
+```{r}
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+ExpReport(data,Target="cost_per_gram",label=NULL,op_file="something.html",op_dir=getwd(),sc=2,sn=2,Rc="Yes")
+```
+
+#### Saving outputs        
+
+```{r}
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   Yes  |
+|            | Dimensions            |   Yes  |
+|            | Other info            |   Yes  |
+|            | Compare datasets      |   No   |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   Yes  |
+|            | Outliers              |   Yes  |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   No   |
+|   Univar.  | Descriptive stat.     |   Yes  |
+|            | Histograms            |   No   |
+|            | Other dist. plots     |   No   |
+|            | Bar plots             |   Yes  |
+|            | QQ plots              |   Yes  |      
+|   Bivar.   | Descriptive stat.     |   Yes  |       
+|            | Correlation matrix    |   No   |
+|            | 1 vs each corr.       |   No   |
+|            | Time-dependency       |   No   |             
+|            | Bar plots by target   |   Yes  |
+|            | Num. plots by target  |   Yes  |
+|            | Scatter plots         |   Yes  |
+|            | Contigency tables     |   No   |
+|            | Other stats. (factor) |   Yes  |
+|  Multivar. | PCA                   |   No   |      
+|            | Stat. models          |   No   |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |   No   |
+|            | Scaling               |   No   |
+|            | Skewness              |   Yes  |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   No   |
+|  Reporting | Reports               |   Yes  |
+|            | Saving outputs        |   No   |
