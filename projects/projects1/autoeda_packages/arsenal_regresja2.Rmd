@@ -21,12 +21,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Overview of functionalities
 
+Pakiet zawiera kilka funkcji, które są użyteczne w szczególnych sytuacjach.
+
 ### Dataset
 
-```{r}
-mockstudy
+Przykładowy zbiór zawierający sztucznie wygenerowane dane medyczne. Można uzyskać
+dostęp do tych danych na dwa sposoby, za pomocą nazy zbioru lub funkcji.
 
-muck_up_mockstudy()
+```{r}
+head(mockstudy)
+
+head(muck_up_mockstudy())
+```
+Zbiór zawiera kilka różnych typów danych:
+* numeric
+* integer
+* character
+* factor
+
+```{r}
+str(mockstudy)
 ```
 
 #### Variable types
@@ -49,17 +63,33 @@ muck_up_mockstudy()
 
 #### Compare datasets
 
+Można porównać dwie ramki za pomocą funkcji comparedf. Dodatkowo można okreścić
+parametr by (lub by.x i by.y), aby określić po jakich ID chcemy porównywać wiersze.
 ```{r}
-comparedf()
-summary(comparedf())
+df1 <- data.frame(a = 1:4,
+                  b = c('a','b','c','d'),
+                  c = rep('i', 4))
+
+df2 <- data.frame(a = 1:3,
+                  b = c('a','b','c'),
+                  c = rep('e', 3))
+
+com <- comparedf(df1, df2)
+summary(com)
 ```
 
 ### Validity
 
 #### Missing values 
 
-```{r}
+Jest funkcja, która zwraca TRUE jeśli wszystkie elementy są NA, w innym przypadku
+zwraca FALSE.
 
+```{r}
+allNA(mockstudy)
+
+a <- rep(NA, 100)
+allNA(a)
 ```
 
 #### Redundant col.
@@ -93,7 +123,7 @@ summary(comparedf())
 #### Descriptive stat.
 
 ```{r}
-freqlist()
+
 ```
 
 #### Histograms 
@@ -142,6 +172,10 @@ freqlist()
 
 #### Time-dependency  
 
+Można porównać zmiany w dwóch punktach czasowych. Jako pierwszy argument określamy,
+jaka zmienna jest czasem i jakie wartości chcemy porównać, potem podajemy nazwę
+ramki danych, a na końcu kategorie po jakiej chcemy ją porównać.
+
 ```{r}
 a <- c(rep(1,6),rep(2,6))
 b <- rep(1:6,2)
@@ -149,7 +183,7 @@ c <- rnorm(12, 4, 1)
 d <- rnorm(12, 0, 5)
 df <- data.frame(time = a, b = b, c = c, d = d)
 
-paired(time ~ c + d, df, b, na.action = na.paired("fill")) -> p
+paired(time ~ c + d, df, b) -> p
 summary(p)
 ```
 
@@ -198,9 +232,16 @@ summary(x)
 ```
 
 #### Stat. models  
+Funkcja modelsum pozwala nam dopasować wiele prostych modeli do wybranej zmiennej
+celu za jednym razem. Do zmiennej celu jest dopasowywany model liniowy z jedną zmienną
+i interceptem. Jeżeli dopasowujemy model do zmiennej kategorycznej zostanie automatycznie
+zastosowany oneHotEncoding i model zostanie dopasowany do jednej, albo więcej zmiennych 
+binarnych.
 
 ```{r}
+modelsum(fu.time~., data = mockstudy) -> mod
 
+summary(mod)
 ```
 
 #### PCP        
@@ -256,10 +297,12 @@ summary(x)
 
 ```
 
-#### Saving outputs        
+#### Saving outputs   
+Można zapisać wyniki do pliku pdf, html i word.
 
 ```{r}
-
+modelsum(fu.time~., data = mockstudy) -> mod
+write2word(summary(mod), 'arsenal.doc')
 ```
 
 
@@ -272,19 +315,19 @@ summary(x)
 |            | Dimensions            |   No   |
 |            | Other info            |   No   |
 |            | Compare datasets      |   Yes  |
-|  Validity  | Missing values        |   No   |
-|            | Redundant col.        |        |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
 |            | Outliers              |   No   |
 |            | Atypical values       |   No   |
 |            | Level encoding        |   No   |
-|   Univar.  | Descriptive stat.     |        |
+|   Univar.  | Descriptive stat.     |   No   |
 |            | Histograms            |   No   |
 |            | Other dist. plots     |   No   |
 |            | Bar plots             |   No   |
 |            | QQ plots              |   No   |      
-|   Bivar.   | Descriptive stat.     |        |       
+|   Bivar.   | Descriptive stat.     |   No   |       
 |            | Correlation matrix    |   No   |
-|            | 1 vs each corr.       |        |
+|            | 1 vs each corr.       |   No   |
 |            | Time-dependency       |   Yes  |             
 |            | Bar plots by target   |   No   |
 |            | Num. plots by target  |   No   |
@@ -294,11 +337,11 @@ summary(x)
 |  Multivar. | PCA                   |   No   |      
 |            | Stat. models          |   Yes  |
 |            | PCP                   |   No   |
-| Transform. | Imputation            |        |
-|            | Scaling               |        |
-|            | Skewness              |        |
-|            | Outlier treatment     |        |
-|            | Binning               |        |
-|            | Merging levels        |        |
+| Transform. | Imputation            |   No   |
+|            | Scaling               |   No   |
+|            | Skewness              |   No   |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   No   |
 |  Reporting | Reports               |   No   |
 |            | Saving outputs        |   Yes  |  
