@@ -1,0 +1,265 @@
+---
+title: "Projekt 1.2"
+author: "Paweł Drągowski"
+date: '`12.04.2023`'
+output: html_document
+---
+
+# Pakiet: ExPanDaR
+# Zadanie: regresja
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+  
+  library(ExPanDaR)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+dane <- read.csv('CarSeats.csv')
+dane <- dane[,-1]
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+```
+
+#### Variable types
+
+```{r}
+```
+
+#### Dimensions
+
+```{r}
+```
+
+#### Other info
+
+```{r}
+```
+
+#### Compare datasets
+
+```{r}
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+prepare_missing_values_graph(dane,ts_id = "ShelveLoc")
+```
+
+#### Redundant col.
+
+```{r}
+```
+
+#### Outliers 
+```{r}
+prepare_ext_obs_table(dane)
+```
+
+
+#### Atypical values
+
+```{r}
+```
+
+
+#### Level encoding 
+
+```{r}
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+prepare_descriptive_table(as.data.frame(dane$Sales))
+```
+
+#### Histograms 
+
+```{r}
+```
+
+#### Other dist. plots
+
+```{r}
+```
+
+#### Bar plots 
+
+```{r}
+```
+
+#### QQ plots
+
+```{r}
+  prepare_quantile_trend_graph(dane,ts_id="Sales")
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+prepare_descriptive_table(dane[,2:3])
+```
+
+#### Correlation matrix 
+
+```{r}
+prepare_correlation_table(dane)
+  prepare_correlation_graph(dane)
+```
+
+#### 1 vs each corr.   
+
+```{r}
+```
+
+#### Time-dependency  
+
+```{r}
+```
+
+#### Bar plots by target  
+
+```{r}
+```
+
+#### Num. plots by target 
+
+```{r}
+```
+
+#### Scatter plots 
+
+```{r}
+  prepare_scatter_plot(dane,"Sales","CompPrice")
+```
+
+#### Contigency tables   
+
+```{r}
+```
+
+#### Other stats. (factor)
+
+```{r}
+prepare_trend_graph(dane,ts_id='Sales')
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+```
+
+#### Stat. models  
+
+```{r}
+```
+
+#### PCP        
+
+```{r}
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+```
+
+#### Scaling 
+
+```{r}
+```
+
+#### Skewness   
+
+```{r}
+```
+
+#### Outlier treatment  
+
+```{r}
+treat_outliers(dane,percentile = 0.01)
+```
+
+#### Binning  
+
+```{r}
+```
+
+#### Merging levels     
+
+```{r}
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+```
+
+#### Saving outputs        
+
+```{r}
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |  NO    |
+|            | Dimensions            |  NO    |
+|            | Other info            |  NO    |
+|            | Compare datasets      |  NO    |
+|  Validity  | Missing values        |  YES   |
+|            | Redundant col.        |  NO    |
+|            | Outliers              |  YES   |
+|            | Atypical values       |  NO    |
+|            | Level encoding        |  NO    |
+|   Univar.  | Descriptive stat.     |  YES   |
+|            | Histograms            |  NO    |
+|            | Other dist. plots     |  NO    |
+|            | Bar plots             |  NO    |
+|            | QQ plots              |  NO    |      
+|   Bivar.   | Descriptive stat.     |  YES   |    
+|            | Correlation matrix    |  YES   |
+|            | 1 vs each corr.       |  NO    |
+|            | Time-dependency       |  NO    |             
+|            | Bar plots by target   |  NO    |
+|            | Num. plots by target  |  NO    |
+|            | Scatter plots         |  YES   |
+|            | Contigency tables     |  NO    |
+|            | Other stats. (factor) |  YES   |
+|  Multivar. | PCA                   |  NO    |      
+|            | Stat. models          |  NO    |
+|            | PCP                   |  NO    |
+| Transform. | Imputation            |  NO    |
+|            | Scaling               |  NO    |
+|            | Skewness              |  NO    |
+|            | Outlier treatment     |  YES   |
+|            | Binning               |  NO    |
+|            | Merging levels        |  NO    |
+|  Reporting | Reports               |  NO    |
+|            | Saving outputs        |  NO    |  

@@ -1,0 +1,290 @@
+---
+title: "Projekt 1.2"
+author: "Dominik Kędzierski"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: Explore
+# Zadanie: klasyfikacja
+
+
+```{r}
+library(explore)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+df <- read.csv("star_6class.csv")
+library(tidyr)
+```
+
+#### Variable types
+
+```{r}
+describe(df)
+```
+
+#### Dimensions
+
+```{r}
+explore(df)
+```
+
+#### Other info
+
+```{r}
+explore(df)
+```
+
+#### Compare datasets
+
+```{r}
+
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+describe(df)
+```
+
+#### Redundant col.
+
+```{r}
+
+```
+
+#### Outliers 
+
+```{r}
+explore(df)
+```
+
+
+#### Atypical values
+
+```{r}
+
+```
+
+
+#### Level encoding 
+
+```{r}
+
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+explore(df)
+```
+
+#### Histograms 
+
+```{r}
+explore(df)
+```
+
+#### Other dist. plots
+
+```{r}
+explore(df)
+
+```
+
+#### Bar plots 
+
+```{r}
+explore(df)
+```
+
+#### QQ plots
+
+```{r}
+
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+
+```
+
+#### Correlation matrix 
+
+```{r}
+
+```
+
+#### 1 vs each corr.   
+
+```{r}
+
+```
+
+#### Time-dependency  
+
+```{r}
+
+```
+
+#### Bar plots by target  
+
+```{r}
+explore(df)
+```
+
+#### Num. plots by target 
+
+```{r}
+explore(df)
+```
+
+#### Scatter plots 
+
+```{r}
+explore(df)
+```
+
+#### Contigency tables   
+
+```{r}
+
+```
+
+#### Other stats. (factor)
+
+```{r}
+explore(df, var=Star.type, var2 = Star.color)
+```
+Teoretycznie według dokumnetacji daje to korelacje aczkolwiek nie wygląda to jak korelacja, jest to korelacja pomiędzy tylko dwiema zmiennymi
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+
+```
+
+#### Stat. models  
+
+```{r}
+explore(df)
+```
+
+#### PCP        
+
+```{r}
+
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+
+```
+
+#### Scaling 
+
+```{r}
+
+```
+
+#### Skewness   
+
+```{r}
+
+```
+
+#### Outlier treatment  
+
+```{r}
+
+```
+
+#### Binning  
+
+```{r}
+
+```
+
+#### Merging levels     
+
+```{r}
+
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+explore(df)
+```
+
+#### Saving outputs        
+
+```{r}
+report(df, output_dir = tempdir())
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   Yes  |
+|            | Dimensions            |   Yes  |
+|            | Other info            |   Yes  |
+|            | Compare datasets      |   No   |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
+|            | Outliers              |   Yes  |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   No   |
+|   Univar.  | Descriptive stat.     |   Yes  |
+|            | Histograms            |   Yes  |
+|            | Other dist. plots     |   Yes  |
+|            | Bar plots             |   Yes  |
+|            | QQ plots              |   No   |      
+|   Bivar.   | Descriptive stat.     |   No   |       
+|            | Correlation matrix    |   No   |
+|            | 1 vs each corr.       |   No   |
+|            | Time-dependency       |   No   |             
+|            | Bar plots by target   |   Yes  |
+|            | Num. plots by target  |   Yes  |
+|            | Scatter plots         |   Yes  |
+|            | Contigency tables     |   No   |
+|            | Other stats. (factor) | Yes/No |
+|  Multivar. | PCA                   |   No   |      
+|            | Stat. models          |   Yes  |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |   No   |
+|            | Scaling               |   No   |
+|            | Skewness              |   No   |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   No   |
+|  Reporting | Reports               |   Yes  |
+|            | Saving outputs        |   Yes  |  

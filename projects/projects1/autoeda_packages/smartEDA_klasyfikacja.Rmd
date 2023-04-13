@@ -1,0 +1,290 @@
+---
+title: "Projekt 1.2"
+author: "Grzegorz Pióro"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: smartEDA
+# Zadanie: klasyfikacja
+
+
+```{r,warning=FALSE,message=FALSE}
+#tutaj ładuje wszystkie potrzebne biblioteki
+dane <- read.csv('gender_classification_v7.csv',header = TRUE)
+library(SmartEDA)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+This dataset contains 7 features and a label column.
+
+long_hair - This column contains 0's and 1's where 1 is "long hair" and 0 is "not long hair".
+forehead_width_cm - This column is in CM's. This is the width of the forehead.
+forehead_height_cm - This is the height of the forehead and it's in Cm's.
+nose_wide - This column contains 0's and 1's where 1 is "wide nose" and 0 is "not wide nose".
+nose_long - This column contains 0's and 1's where 1 is "Long nose" and 0 is "not long nose".
+lips_thin - This column contains 0's and 1's where 1 represents the "thin lips" while 0 is "Not thin lips".
+distance_nose_to_lip_long - This column contains 0's and 1's where 1 represents the "long distance between nose and lips" while 0 is "short distance between nose and lips".
+
+```{r}
+print(head(dane))
+```
+
+
+#### Variable types
+
+```{r}
+ExpData(data = dane, type = 1)[3:9,]
+```
+
+#### Dimensions
+
+```{r}
+ExpData(data = dane, type = 1)[1:2,]
+```
+
+#### Other info
+
+You can add your own functions to summarise data as well.
+
+```{r}
+quantile_10 = function(x){
+  quantile_10 = quantile(x, na.rm = TRUE, 0.1)
+}
+ExpData(data=dane, type=2, fun=c("quantile_10"))
+```
+
+#### Compare datasets
+
+There is no function for this
+
+### Validity
+
+#### Missing values 
+
+```{r}
+ExpData(data=dane,type = 2)
+```
+
+#### Redundant col.
+
+No such function found.
+
+#### Outliers 
+
+```{r}
+ExpOutliers(dane, varlist = c("forehead_width_cm","forehead_height_cm","nose_wide"), method = "boxplot",  treatment = "mean", capping = c(0.1, 0.9))
+```
+```{r}
+ExpOutliers(dane, varlist = c("forehead_width_cm","forehead_height_cm","nose_wide"), method = "3xStDev",  treatment = "median", capping = c(0.1, 0.9))
+```
+
+#### Atypical values
+
+Unfortunately, there isn't such a function in the package description.
+
+
+#### Level encoding 
+
+Unfortunately, there isn't such a function in the package description.
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+ExpCTable(dane,Target=NULL,margin=1,clim=10,nlim=3,round=2,bin=NULL,per=T)
+```
+
+#### Histograms 
+
+Unfortunately, there isn't such a function in the package description.
+
+#### Other dist. plots
+
+```{r}
+ExpNumViz(dane,target=NULL,nlim=10,Page=c(2,1),sample=2)
+```
+
+#### Bar plots 
+
+```{r}
+ExpCatViz(dane,target=NULL,col ="slateblue4",clim=10,margin=2,Page = c(2,2),sample=4)
+```
+
+#### QQ plots
+
+```{r}
+qqp <- ExpOutQQ(dane,nlim=10,fname=NULL,Page=c(2,2),sample=4)
+qqp[[1]]
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+ExpNumStat(dane,by="GA",gp="gender",Qnt=seq(0,1,0.1),MesofShape=2,Outlier=TRUE,round=2)
+```
+
+#### Correlation matrix 
+
+```{r}
+```
+
+#### 1 vs each corr.   
+
+```{r}
+```
+
+#### Time-dependency  
+
+```{r}
+```
+
+#### Bar plots by target  
+
+```{r}
+ExpCatViz(dane, margin = 2, target = "gender", 
+          col = c("red","green"))
+```
+
+#### Num. plots by target 
+
+```{r}
+ExpNumViz(dane,target="gender",type=1,nlim=3,fname=NULL,col=c("darkgreen","springgreen3","springgreen1"),Page=c(2,1),sample=2)
+```
+
+#### Scatter plots 
+
+```{r}
+ExpNumViz(dane, scatter = TRUE)
+```
+
+#### Contigency tables   
+
+```{r}
+```
+
+#### Other stats. (factor)
+
+```{r}
+ExpParcoord(dane,Group="nose_long",Stsize=NULL,Nvar=c("long_hair","forehead_width_cm","forehead_height_cm","nose_wide","nose_long","lips_thin","distance_nose_to_lip_long","gender"))
+
+ExpKurtosis(dane$forehead_width_cm,type = 'moment')
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+```
+
+#### Stat. models  
+
+```{r}
+```
+
+#### PCP        
+
+```{r}
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+```
+
+#### Scaling 
+
+```{r}
+```
+
+#### Skewness   
+
+```{r}
+ExpSkew(dane, type = 'moment')
+```
+
+#### Outlier treatment  
+
+```{r}
+```
+
+#### Binning  
+
+```{r}
+```
+
+#### Merging levels     
+
+```{r}
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+#ExpReport(dane,Target="gender",theme="Default",op_file="Samp2.html")
+```
+
+#### Saving outputs        
+
+```{r}
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |    Yes    |
+|            | Dimensions            |    Yes    |
+|            | Other info            |    Yes    |
+|            | Compare datasets      |    No    |
+|  Validity  | Missing values        |    Yes    |
+|            | Redundant col.        |    No    |
+|            | Outliers              |    Yes    |
+|            | Atypical values       |    No    |
+|            | Level encoding        |    No    |
+|   Univar.  | Descriptive stat.     |    Yes    |
+|            | Histograms            |    No    |
+|            | Other dist. plots     |    Yes    |
+|            | Bar plots             |    Yes    |
+|            | QQ plots              |    Yes    |      
+|   Bivar.   | Descriptive stat.     |    Yes    |       
+|            | Correlation matrix    |    No    |
+|            | 1 vs each corr.       |    No    |
+|            | Time-dependency       |    No    |             
+|            | Bar plots by target   |    Yes    |
+|            | Num. plots by target  |    Yes    |
+|            | Scatter plots         |    Yes    |
+|            | Contigency tables     |    No    |
+|            | Other stats. (factor) |    Yes    |
+|  Multivar. | PCA                   |    No    |      
+|            | Stat. models          |    No    |
+|            | PCP                   |    No    |
+| Transform. | Imputation            |    No    |
+|            | Scaling               |    No    |
+|            | Skewness              |    Yes    |
+|            | Outlier treatment     |    No    |
+|            | Binning               |    No    |
+|            | Merging levels        |    No    |
+|  Reporting | Reports               |    Yes    |
+|            | Saving outputs        |    No    |  
