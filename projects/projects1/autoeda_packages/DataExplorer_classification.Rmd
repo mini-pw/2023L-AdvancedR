@@ -1,0 +1,277 @@
+---
+title: "Projekt 1.2"
+author: "Antoni Chudy"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: DataExplorer
+# Zadanie: klasyfikacja
+
+
+```{r}
+library(DataExplorer)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+
+df <- iris
+```
+
+#### Variable types
+
+```{r}
+plot_str(df)
+```
+
+#### Dimensions
+
+```{r}
+introduce(df)
+```
+
+#### Other info
+
+```{r}
+plot_intro(df)
+```
+
+#### Compare datasets
+
+```{r}
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+plot_missing(df)
+profile_missing(df)
+```
+
+#### Redundant col.
+
+```{r}
+
+```
+
+#### Outliers 
+
+```{r}
+```
+
+
+#### Atypical values
+
+```{r}
+```
+
+
+#### Level encoding 
+
+```{r}
+dummify(df)
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+```
+
+#### Histograms 
+
+```{r}
+plot_histogram(df)
+```
+
+#### Other dist. plots
+
+```{r}
+plot_density(df)
+```
+
+#### Bar plots 
+
+```{r}
+plot_bar(df)
+```
+
+#### QQ plots
+
+```{r}
+plot_qq(df$Sepal.Length)
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+```
+
+#### Correlation matrix 
+
+```{r}
+plot_correlation(na.omit(df), maxcat = 5L)
+```
+
+#### 1 vs each corr.   
+
+```{r}
+```
+
+#### Time-dependency  
+
+```{r}
+```
+
+#### Bar plots by target  
+
+```{r}
+plot_bar(df, with = "Sepal.Width")
+```
+
+#### Num. plots by target 
+
+```{r}
+plot_boxplot(na.omit(df), by = "Sepal.Width")
+```
+
+#### Scatter plots 
+
+```{r}
+plot_scatterplot(df, by = 'Sepal.Length')
+```
+
+#### Contigency tables   
+
+```{r}
+```
+
+#### Other stats. (factor)
+
+```{r}
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+plot_prcomp(na.omit(df), variance_cap = 0.9, nrow = 2L, ncol = 2L)
+```
+
+#### Stat. models  
+
+```{r}
+```
+
+#### PCP        
+
+```{r}
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+set_missing(df, list(0L, "unknown"))
+```
+
+#### Scaling 
+
+```{r}
+```
+
+#### Skewness   
+
+```{r}
+```
+
+#### Outlier treatment  
+
+```{r}
+```
+
+#### Binning  
+
+```{r}
+
+```
+
+#### Merging levels     
+
+```{r}
+
+group_category(data = df, feature = "Sepal.Length", threshold = 0.1, update = TRUE)
+
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+create_report(df)
+```
+
+#### Saving outputs        
+
+```{r}
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   Yes  |
+|            | Dimensions            |   Yes  |
+|            | Other info            |   Yes  |
+|            | Compare datasets      |   No   |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
+|            | Outliers              |   No   |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   Yes  |
+|   Univar.  | Descriptive stat.     |   No   |
+|            | Histograms            |   Yes  |
+|            | Other dist. plots     |   Yes  |
+|            | Bar plots             |   Yes  |
+|            | QQ plots              |   Yes  |      
+|   Bivar.   | Descriptive stat.     |   No   |       
+|            | Correlation matrix    |   Yes  |
+|            | 1 vs each corr.       |   No   |
+|            | Time-dependency       |   No   |             
+|            | Bar plots by target   |   Yes  |
+|            | Num. plots by target  |   Yes  |
+|            | Scatter plots         |   Yes  |
+|            | Contigency tables     |   No   |
+|            | Other stats. (factor) |   No   |
+|  Multivar. | PCA                   |   Yes  |      
+|            | Stat. models          |   No   |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |   Yes  |
+|            | Scaling               |   No   |
+|            | Skewness              |   No   |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   Yes  |
+|  Reporting | Reports               |   Yes  |
+|            | Saving outputs        |   No   |  
