@@ -1,0 +1,347 @@
+---
+title: "Projekt 1.2"
+author: "Kinga Frańczak"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: arsenal
+# Zadanie: regresja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+#library(arsenal)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+Pakiet zawiera kilka funkcji, które są użyteczne w szczególnych sytuacjach.
+
+### Dataset
+
+Przykładowy zbiór zawierający sztucznie wygenerowane dane medyczne. Można uzyskać
+dostęp do tych danych na dwa sposoby, za pomocą nazy zbioru lub funkcji.
+
+```{r}
+head(mockstudy)
+
+head(muck_up_mockstudy())
+```
+Zbiór zawiera kilka różnych typów danych:
+* numeric
+* integer
+* character
+* factor
+
+```{r}
+str(mockstudy)
+```
+
+#### Variable types
+
+```{r}
+
+```
+
+#### Dimensions
+
+```{r}
+
+```
+
+#### Other info
+
+```{r}
+
+```
+
+#### Compare datasets
+
+Można porównać dwie ramki za pomocą funkcji comparedf. Dodatkowo można okreścić
+parametr by (lub by.x i by.y), aby określić po jakich ID chcemy porównywać wiersze.
+```{r}
+df1 <- data.frame(a = 1:4,
+                  b = c('a','b','c','d'),
+                  c = rep('i', 4))
+
+df2 <- data.frame(a = 1:3,
+                  b = c('a','b','c'),
+                  c = rep('e', 3))
+
+com <- comparedf(df1, df2)
+summary(com)
+```
+
+### Validity
+
+#### Missing values 
+
+Jest funkcja, która zwraca TRUE jeśli wszystkie elementy są NA, w innym przypadku
+zwraca FALSE.
+
+```{r}
+allNA(mockstudy)
+
+a <- rep(NA, 100)
+allNA(a)
+```
+
+#### Redundant col.
+
+```{r}
+
+```
+
+#### Outliers 
+
+```{r}
+
+```
+
+
+#### Atypical values
+
+```{r}
+
+```
+
+
+#### Level encoding 
+
+```{r}
+
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+
+```
+
+#### Histograms 
+
+```{r}
+
+```
+
+#### Other dist. plots
+
+```{r}
+
+```
+
+#### Bar plots 
+
+```{r}
+
+```
+
+#### QQ plots
+
+```{r}
+
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+
+```
+
+#### Correlation matrix 
+
+```{r}
+
+```
+
+#### 1 vs each corr.   
+
+```{r}
+
+```
+
+#### Time-dependency  
+
+Można porównać zmiany w dwóch punktach czasowych. Jako pierwszy argument określamy,
+jaka zmienna jest czasem i jakie wartości chcemy porównać, potem podajemy nazwę
+ramki danych, a na końcu kategorie po jakiej chcemy ją porównać.
+
+```{r}
+a <- c(rep(1,6),rep(2,6))
+b <- rep(1:6,2)
+c <- rnorm(12, 4, 1)
+d <- rnorm(12, 0, 5)
+df <- data.frame(time = a, b = b, c = c, d = d)
+
+paired(time ~ c + d, df, b) -> p
+summary(p)
+```
+
+#### Bar plots by target  
+
+```{r}
+
+```
+
+#### Num. plots by target 
+
+```{r}
+
+```
+
+#### Scatter plots 
+
+```{r}
+
+```
+
+#### Contigency tables   
+
+```{r}
+sample(c('1','2','3'),100, replace = TRUE) -> a
+sample(c('a','b'),100, replace = TRUE) -> b
+df <- data.frame(a = a, b = b)
+
+tableby(b ~ a, df) -> x
+summary(x)
+```
+
+#### Other stats. (factor)
+
+```{r}
+
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+
+```
+
+#### Stat. models  
+Funkcja modelsum pozwala nam dopasować wiele prostych modeli do wybranej zmiennej
+celu za jednym razem. Do zmiennej celu jest dopasowywany model liniowy z jedną zmienną
+i interceptem. Jeżeli dopasowujemy model do zmiennej kategorycznej zostanie automatycznie
+zastosowany oneHotEncoding i model zostanie dopasowany do jednej, albo więcej zmiennych 
+binarnych.
+
+```{r}
+modelsum(fu.time~., data = mockstudy) -> mod
+
+summary(mod)
+```
+
+#### PCP        
+
+```{r}
+
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+
+```
+
+#### Scaling 
+
+```{r}
+
+```
+
+#### Skewness   
+
+```{r}
+
+```
+
+#### Outlier treatment  
+
+```{r}
+
+```
+
+#### Binning  
+
+```{r}
+
+```
+
+#### Merging levels     
+
+```{r}
+
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+
+```
+
+#### Saving outputs   
+Można zapisać wyniki do pliku pdf, html i word.
+
+```{r}
+modelsum(fu.time~., data = mockstudy) -> mod
+write2word(summary(mod), 'arsenal.doc')
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   No   |
+|            | Dimensions            |   No   |
+|            | Other info            |   No   |
+|            | Compare datasets      |   Yes  |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
+|            | Outliers              |   No   |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   No   |
+|   Univar.  | Descriptive stat.     |   No   |
+|            | Histograms            |   No   |
+|            | Other dist. plots     |   No   |
+|            | Bar plots             |   No   |
+|            | QQ plots              |   No   |      
+|   Bivar.   | Descriptive stat.     |   No   |       
+|            | Correlation matrix    |   No   |
+|            | 1 vs each corr.       |   No   |
+|            | Time-dependency       |   Yes  |             
+|            | Bar plots by target   |   No   |
+|            | Num. plots by target  |   No   |
+|            | Scatter plots         |   No   |
+|            | Contigency tables     |   Yes  |
+|            | Other stats. (factor) |   No   |
+|  Multivar. | PCA                   |   No   |      
+|            | Stat. models          |   Yes  |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |   No   |
+|            | Scaling               |   No   |
+|            | Skewness              |   No   |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   No   |
+|  Reporting | Reports               |   No   |
+|            | Saving outputs        |   Yes  |  
