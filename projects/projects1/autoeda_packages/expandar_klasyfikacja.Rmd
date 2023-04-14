@@ -1,0 +1,275 @@
+---
+title: "Projekt 1.2"
+author: "Zuzanna Glinka"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Pakiet: ExPanDaR
+# Zadanie: klasyfikacja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+library(ExPanDaR)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+df<-read.csv('/Users/zuzannaglinka/Downloads/train.csv')
+```
+
+#### Variable types
+
+```{r}
+
+```
+
+#### Dimensions
+
+```{r}
+#
+```
+
+#### Other info
+
+```{r}
+```
+
+#### Compare datasets
+
+```{r}
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+prepare_missing_values_graph(df, 'Style')
+```
+
+#### Redundant col.
+
+```{r}
+```
+
+#### Outliers 
+
+```{r}
+treat_outliers(df)
+```
+
+
+#### Atypical values
+
+```{r}
+```
+
+
+#### Level encoding 
+
+```{r}
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+prepare_descriptive_table(df)
+ExPanD(df, components = c(descriptive_table = TRUE))
+```
+
+#### Histograms 
+
+```{r}
+ExPanD(df, components = c(histogram = TRUE))
+```
+
+#### Other dist. plots
+
+```{r}
+ExPanD(df, components = c(sample_selection = TRUE, subset_factor = TRUE, grouping = TRUE,
+                           missing_values = TRUE, udvars = TRUE, ext_obs = TRUE, by_group_bar_graph = TRUE, by_group_violin_graph = TRUE, trend_graph = TRUE, quantile_trend_graph = TRUE, by_group_trend_graph = TRUE))
+```
+
+#### Bar plots 
+
+```{r}
+ExPanD(df, components = c(bar_chart = TRUE))
+```
+
+#### QQ plots
+
+```{r}
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+```
+
+#### Correlation matrix 
+
+```{r}
+ExPanD(df, components = c(corplot = TRUE))
+```
+
+#### 1 vs each corr.   
+
+```{r}
+```
+
+#### Time-dependency  
+
+```{r}
+prepare_trend_graph(df, 'colName')
+```
+
+#### Bar plots by target  
+
+```{r}
+prepare_by_group_bar_graph(df, 'Style', 'Body')
+ExPanD(df, components = c(bar_chart = TRUE)) 
+```
+
+#### Num. plots by target 
+
+```{r}
+prepare_by_group_trend_graph(df, 'Fruits', 'Style', 'Body')
+ExPanD(df, components = c(trend_graph = TRUE)) 
+```
+
+#### Scatter plots 
+
+```{r}
+ExPanD(df, components = c(scatter_plot = TRUE)) 
+```
+
+#### Contigency tables   
+
+```{r}
+```
+
+#### Other stats. (factor)
+
+```{r}
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+```
+
+#### Stat. models  
+
+```{r}
+#
+```
+
+#### PCP        
+
+```{r}
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+```
+
+#### Scaling 
+
+```{r}
+```
+
+#### Skewness   
+
+```{r}
+```
+
+#### Outlier treatment  
+
+```{r}
+treat_outliers(df, 'Body')
+```
+
+#### Binning  
+
+```{r}
+```
+
+#### Merging levels     
+
+```{r}
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+```
+
+#### Saving outputs        
+
+```{r}
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   No   |
+|            | Dimensions            |   Yes  |
+|            | Other info            |   No   |
+|            | Compare datasets      |   No   |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
+|            | Outliers              |  Yes   |
+|            | Atypical values       |   No      |
+|            | Level encoding        |   No    |
+|   Univar.  | Descriptive stat.     |   Yes     |
+|            | Histograms            |   Yes      |
+|            | Other dist. plots     |   Yes      |
+|            | Bar plots             |    Yes    |
+|            | QQ plots              |   No      |      
+|   Bivar.   | Descriptive stat.     |    No    |       
+|            | Correlation matrix    |    Yes    |
+|            | 1 vs each corr.       |    No    |
+|            | Time-dependency       |    Yes    |             
+|            | Bar plots by target   |    Yes    |
+|            | Num. plots by target  |    Yes    |
+|            | Scatter plots         |    Yes    |
+|            | Contigency tables     |    No    |
+|            | Other stats. (factor) |    No    |
+|  Multivar. | PCA                   |   No     |      
+|            | Stat. models          |  Yes      |
+|            | PCP                   |    No    |
+| Transform. | Imputation            |    No    |
+|            | Scaling               |    No    |
+|            | Skewness              |    No    |
+|            | Outlier treatment     |    Yes    |
+|            | Binning               |    no    |
+|            | Merging levels        |    No    |
+|  Reporting | Reports               |    No    |
+|            | Saving outputs        |    No    |  
