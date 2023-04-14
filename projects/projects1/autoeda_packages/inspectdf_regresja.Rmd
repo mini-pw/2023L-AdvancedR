@@ -1,0 +1,377 @@
+---
+title: "Projekt 1.2"
+author: "Kacper Skonieczka"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: inspectdf
+# Zadanie: regresja
+
+Pakiet to zestaw 7 funkcji do kolumnowego podsumowywania, porównywania i wizualizacji ramek danych, inspectdf zawiera funkcje do raportowania brakujących danych, poziomów kategorycznych, rozkładu wartości liczbowych, korelacji, typów kolumn oraz zużycia pamięci. Dzięki tym funkcjom, użytkownicy mogą szybko ocenić strukturę swoich danych i wskazać potencjalne obszary zainteresowania.
+
+### Zbiór danych:
+Zbiór danych dotyczy mieszkań i ich ceny w Lisbonie. Ma 236 wierszy i 17 kolumn.
+
+Poszczególne kolumny to:
+
+- Condition - stan budynku (nowy, jak nowy, używany, do renowacji)
+- PropertyType - typ posiadłości (dom wolno-stojący lub kompleks mieszkaniowy)
+- PropertySubType - podtyp posiadłości (apartament, bliźniak, itd…)
+- Bedrooms - liczba sypialnii
+- Bathrooms - liczba łazienek
+- AreaNet/AreaGross - powierzchnia netto/brutto
+- Parking - liczba miejsc parkingowych
+- Latitude - szerokość geograficzna
+- Longitude - wysokość geograficzna
+- Country/District/Municipacity - kraj/region/miasto w którym znajduje się posiadłość
+- Parish - dzielnica miasta
+- Price Sq. M. - cena za metr kwadratowy w lokalizacji posiadłości
+- Pricez - badana zmienna - cena posiadłości
+
+### Set-up
+
+```{r}
+library("inspectdf")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+Tworzę nowy bardzo podobny zbiór danych, gdyż pakiet daje możliwość proównywania między sobą zbiorów danych w każdej funkcji!
+
+```{r}
+lisbon_houses <- read.csv("lisbon-houses.csv")
+
+lisbon_houses2 <- read.csv("lisbon-houses.csv")
+lisbon_houses2$Condition <- "As New"
+lisbon_houses2$Price.M2 <- lisbon_houses2$Price.M2  + lisbon_houses2$Price.M2
+lisbon_houses2$New_Columns <- "new_value"
+lisbon_houses2$New_Columns2 <- NA
+```
+
+#### Variable types
+
+Funkcja `type_summary` zwraca tabelkę, która podsumowywuje liczbe zmiennych konkretnego typu w tabeli.
+Wszystkie funkcje pakietu możemy wrzucić do funkcji `show_plot` i otrzymać dedykowany wykres (w tym przypaku niestety kołowy).
+
+```{r}
+type_summary <- inspect_types(lisbon_houses)
+type_summary
+
+#wbierając kolumnę col_name możemy zobaczyć nazwy kolumn danego typu
+
+show_plot(type_summary)
+```
+
+
+#### Dimensions
+
+Nie ma bezpośredniej funkcjonalności. Da się uzyskać tę informację z innych funkcji ale jest to nieefektywne rozwiązanie w porównaniu do bazowe funkcji `dim`
+
+
+```{r}
+# Brak funkcjonalności
+```
+
+#### Other info
+
+Funkcja `inpect_mem` służy do podsumowywania zajmowania pamięci przez konkretne kolumny. Niestey plotowanie tego jest niezgodne z zasadami technik wizualizacji danych, Słupki mają nic nie mówiące kolory tęczy. 
+
+```{r}
+inspect_mem(lisbon_houses)
+show_plot(inspect_mem(lisbon_houses))
+```
+
+#### Compare datasets
+
+Jak już wspomniałem do każdej funkcji służącej do analizowania (z prefixem inspect) danych można podać dwie ramki danych. Wtedy dostaniemy porówanie dla obu ramek na temat tego do czego służy dana funkcja.
+
+```{r}
+types_summary <- inspect_types(lisbon_houses, lisbon_houses2)
+types_summary
+show_plot(types_summary)
+
+
+cor_summary <- inspect_cor(lisbon_houses, lisbon_houses2)
+cor_summary
+show_plot(cor_summary)
+```
+
+### Validity
+
+#### Missing values 
+
+Funkcja zwraca tabelkę o liczbie (i procencie) `NA-nów` w każdej kolumnie
+
+```{r}
+inspect_na(lisbon_houses2)
+show_plot(inspect_na(lisbon_houses2))
+```
+
+#### Redundant col.
+
+Bezpośredniej funkcji służacej do ich wykrywania nie ma.Można uzyskać informację na ten temat przyglądając się wyynikom funkcji służącym do analizy zmiennych kategorycznych, czy też późniejszej pokazanej korelacji
+
+```{r}
+# Brak funkcjonalności
+```
+
+#### Outliers 
+
+Brak bezpośredniej funkcjonalności, lecz można je wykryć analizując wyniki `inspect_num`, a dokładnie to ich formatowanie  (stąd nie zaliczam tego jako funkcjonalność). Wartości będące outlierami są zaznaczone na czerwowno.
+
+```{r}
+# Brak funkcjonalności
+```
+
+
+#### Atypical values
+
+Brak bezpośredniej funkcjonalności, lecz można je wykryć analizując wyniki `inspect_num` (dającej podsumowanie kolumn numerycznych) i `inspect_cat` (dające podsumowanie kolumn kategorycznych)
+W wynikach `inspect_df` anomalie jak np. zerowe odchylenie standardowe jest zaznaczone czerwoną czcionką.
+
+```{r}
+# Brak funkcjonalności
+```
+
+
+#### Level encoding 
+
+Do analizy encodowania służy funckja `inspect_cat`, która podsumowywuje poziomy każdej kolumny kategorycznej (ile ich jest i jakie jest procentowy udział tego, który jest najczęstszy). Samej opcji kodowania nie ma. 
+
+
+```{r}
+inspect_cat(lisbon_houses)
+show_plot(inspect_cat(lisbon_houses))
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+inspect_num(lisbon_houses)
+```
+
+#### Histograms 
+
+```{r}
+show_plot(inspect_num(lisbon_houses))
+```
+
+#### Other dist. plots
+
+```{r}
+# Brak funkcjonalności
+```
+
+
+#### Bar plots 
+
+- `show_plot(inspect_cat(lisbon_houses))` przedstawia procentowu udział każdej z flag w zmiennej kategorycznej
+- `show_plot(inspect_imb(lisbon_houses))` przedstawia na procesie słupkowym procent, który stanowi wartość najczęstsza w zmiennej kategorycznej
+
+```{r}
+show_plot(inspect_cat(lisbon_houses))
+show_plot(inspect_imb(lisbon_houses))
+```
+
+#### QQ plots
+
+```{r}
+# Brak funkcjonalności
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+Jedyne dwuzmienne statystyki opisowe,które możemy uzyskać za pomocą tego pakietu to te dotyczące korelacji.
+
+```{r}
+inspect_cor(lisbon_houses)
+```
+
+#### Correlation matrix 
+
+Pewien jej rodzaj dostajemy korzystając z funkcji `inspect_cor`, która w zwracanym podsumowaniu ma wartości korelacji dla możliwych do utworzenia par zmiennych.
+
+```{r}
+show_plot(inspect_cor(lisbon_houses))
+```
+
+#### 1 vs each corr.   
+
+Wystaczy podać w argumencie funkcji `inspect_cor` tą jedną konkretną zmienną jako jednoelementowy wektor.
+
+```{r}
+inspect_cor(lisbon_houses, with_col = "Price")
+show_plot(inspect_cor(lisbon_houses, with_col = c("Price")))
+```
+
+#### Time-dependency  
+
+```{r}
+#Brak funkcjonalności
+```
+
+#### Bar plots by target  
+
+```{r}
+#Brak funkcjonalności
+```
+
+#### Num. plots by target 
+
+```{r}
+#Brak funkcjonalności
+```
+
+#### Scatter plots 
+
+```{r}
+# Brak funkcjonalności
+```
+
+#### Contigency tables   
+
+```{r}
+#Brak funkcjonalności
+```
+
+#### Other stats. (factor)
+
+Wspomniana wcześniej przy barplocie `inspect_imb`zwraca informację na temat procentowym udziale najczestszej flagi w zmiennej kategorycznej.
+
+
+```{r}
+inspect_imb(lisbon_houses)
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Stat. models  
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### PCP        
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Scaling 
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Skewness   
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Outlier treatment  
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Binning  
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Merging levels     
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+#### Saving outputs        
+
+```{r}
+#Brak takiej funkcjonalności
+```
+
+
+Pakiet inspectdf nie zawiera funkcjonalności związanych z analizą wielowymiarową, transformacją danych oraz generowaniem raportów i zapisywaniem wyników.
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |    Yes    |
+|            | Dimensions            |    No     |
+|            | Other info            |    Yes    |
+|            | Compare datasets      |    Yes    |
+|  Validity  | Missing values        |    Yes    |
+|            | Redundant col.        |    No     |
+|            | Outliers              |    No     |
+|            | Atypical values       |    No     |
+|            | Level encoding        |    Yes    |
+|   Univar.  | Descriptive stat.     |    Yes    |
+|            | Histograms            |    Yes    |
+|            | Other dist. plots     |    No     |
+|            | Bar plots             |    Yes    |
+|            | QQ plots              |    No     |      
+|   Bivar.   | Descriptive stat.     |    Yes     |       
+|            | Correlation matrix    |    Yes    |
+|            | 1 vs each corr.       |    Yes    |
+|            | Time-dependency       |    No     |             
+|            | Bar plots by target   |    No     |
+|            | Num. plots by target  |    No     |
+|            | Scatter plots         |    No     |
+|            | Contigency tables     |    No    |
+|            | Other stats. (factor) |    Yes    |
+|  Multivar. | PCA                   |    No     |      
+|            | Stat. models          |    No     |
+|            | PCP                   |    No     |
+| Transform. | Imputation            |    No     |
+|            | Scaling               |    No     |
+|            | Skewness              |    No     |
+|            | Outlier treatment     |    No     |
+|            | Binning               |    No     |
+|            | Merging levels        |    No     |
+|  Reporting | Reports               |    No     |
+|            | Saving outputs        |    No     |  
+
+
+
+Największą zaletą pakietu z mojej perspektywy jest możliwość podawania dwóch ramek danych do wszystkich poleceń w celu ich porównania pod jakimś względem. Opcja podawania wyników wszystkich funkcji do `show_plot również wydaję się wygodna.  
+Największą wadą są wykresy w losowych kolorach. 
