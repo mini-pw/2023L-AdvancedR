@@ -1,0 +1,422 @@
+---
+title: "Projekt 1.2"
+author: "Iza Danielewska"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: funModeling
+# Zadanie: klasyfikacja
+
+## Mały wstępik
+
+Pakiet ten zawiera zestaw funkcji związanych z eksploracyjną analizą danych, przygotowaniem danych oraz wykonaniem modelu.
+
+
+```{r}
+#ładujemy wszystkie potrzbne biblioteki
+library(funModeling)
+library(dplyr)
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+Biblioteka udostępnia zbiór danych heart_disease o chorobach serca. Zawiera pewne dane o pacjentach i ich objawach. Ostatnia kolumna opisuje, czy pacjent cierpi na chorobę serca, czy nie.
+
+Zbiór ten pochodzi z: https://archive.ics.uci.edu/ml/datasets/Heart+Disease 
+
+Większość typów zmiennych ma charakter jakościowy, chociaż istnieją zmienne liczbowe opisujące ciśnienie krwi (w mm Hg przy przyjęciu do szpitala), poziom cholestotoru w surowicy w mg/dl, puls w uderzeniach na minutę oraz oldpeak – obniżenie odcinka ST wywołane wysiłkiem fizycznym w stosunku do odpoczynku.
+
+Pozostałe cechy to zmienne jakościowe o kilku poziomach.
+
+Dodatkowo pakiet zawiera kilka innych zestawów danych z mniejszą liczbą zmiennych i/lub obserwacji, np. 'data_country' - opisujący czy dana osoba ma grypę, 'play_golf' - opisujący czy grać w golfa przy pewnych warunkach atmosferycznych.
+
+
+
+```{r}
+print(head(heart_disease))
+```
+
+#### Variable types
+
+
+```{r}
+status(heart_disease)
+```
+
+Funkcja umożliwia podgląd zarówno typów zmiennych, jak i podaje informacje na temat braków danych, wartości 0 oraz nieskończonści i wartości unikalnych. Wszystko podsumowane jest w jednej tabelce opisującej każdą zmienną osobno w wierszach.
+
+
+#### Dimensions
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Other info
+
+```{r}
+di=data_integrity(heart_disease)
+
+summary(di)
+```
+
+Funkcja 'data_integrity' połączona z funkcją 'sumaryczną'summary' zwraca informację, 
+które kolumny zawierają np. wartości 'NA'.
+
+Ponadto zwraca wektor zawierający nazwy zmiennych kategorycznych, numerycznych, character-ów,
+factorów i innych, tabele o 'NA' dla zmiennych numerycznych i kategorycznych, tabele
+zmiennych o dużej liczności leveli i tabelę zawierającą zmienne o pojedyńćzych wartościach
+dla danego level'u.
+
+No ogólnie taka fajna funkcja, żeby wiedzieć gdzie mamy wyczyścić dane.
+
+#### Compare datasets
+
+```{r}
+data(heart_disease)
+a=heart_disease
+b=heart_disease
+a=subset(a, age > 45)
+b=subset(b, age < 50)
+b$gender='male'
+b$chest_pain=ifelse(b$chest_pain == 3, 4, b$chest_pain)
+res=compare_df(a, b, c('age', 'gender'))
+res
+res$rows_not_in_X
+res$rows_not_in_Y
+res$coincident
+```
+Funkcja opisuje różne rodzaje obserwacji w porównywanych ramkach danych. Zwraca listę z 3 elementami zawierającymi obserwacje, które są wspólne dla obu ramek danych i które występują w pierwszej lub drugiej.
+Porównanie odbywa się na podstawie podanych kluczowych nazw kolumn lub po prostu każdej cechy w obserwacjach.
+
+
+### Validity
+
+#### Missing values 
+
+```{r}
+status(heart_disease)
+di=data_integrity(heart_disease)
+summary(di)
+```
+
+Tutaj możemy posłużyć się funkcjami opisanymi wcześniej bo one ładnie pokazują nam,
+które zmienne mają braki danych.
+
+#### Redundant col.
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Outliers 
+
+```{r}
+hampel_outlier(heart_disease$age)
+```
+
+Pobiera dolną i górną granicę w celu oznaczenia wartości odstających lub ekstremalnych, zgodnie z metodą Hampela.
+
+```{r}
+tukey_outlier(heart_disease$age)
+```
+
+Pobiera dolną i górną granicę, aby oznaczyć wartości odstające lub ekstremalne, zgodnie z testem Tukey'a.
+
+#### Atypical values
+
+```{r}
+print('no nie ma nic')
+```
+
+
+#### Level encoding 
+
+```{r}
+print('no nie ma nic')
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+profiling_num(heart_disease)
+```
+
+Funkcja daje bardzo szczegółowy opis zmiennych numerycznych. Jest porównywalna z funkcją summary, ale jest od niej bardziej szczegółowa.
+
+Oblicza między innymi średnią, skośność, kurtozę, kwantyle i inne miary statystyczne.
+
+#### Histograms 
+
+```{r}
+plot_num(heart_disease, bins = 30)
+```
+
+Pobiera jeden wykres zawierający wszystkie histogramy dla zmiennych. Wartości 'NA' nie będą wyświetlane.
+
+#### Other dist. plots
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Bar plots 
+
+```{r}
+freq(data=heart_disease$thal)
+```
+Pobiera częstotliwość i procent dla danych wejściowych
+
+#### QQ plots
+
+```{r}
+print('no nie ma nic')
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+var_rank_info(heart_disease, target = 'has_heart_disease')
+```
+
+Funkcja oblicza kilka metryk związanych z teorią informacji
+między kolumnami a danym celem. Obliczone metryki to entropia
+(en), mutual information (mi), information gain (ig) and gain ratio (gr). 
+
+#### Correlation matrix 
+
+```{r}
+print('no nie ma nic')
+```
+
+#### 1 vs each corr.   
+
+```{r}
+correlation_table(data=heart_disease, target="has_heart_disease")
+```
+
+Funkcja oblicza korelację dla wszystkich zmiennych ze zmienną celu. 
+Analizowane są tylko zmienne numeryczne (czynniki/znaki są automatycznie pomijane).
+
+#### Time-dependency  
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Bar plots by target  
+
+```{r}
+cross_plot(data=heart_disease, input="chest_pain", target="has_heart_disease")
+```
+
+Wykres krzyżowy pokazuje, w jaki sposób zmienna wejściowa jest skorelowana ze zmienną celu, uzyskując współczynniki prawdopodobieństwa dla każdego level'u danych wejściowych. 
+
+#### Num. plots by target 
+
+```{r}
+plotar(data=heart_disease, target="has_heart_disease", plot_type="histdens")
+
+plotar(heart_disease, input = 'age', target = 'has_heart_disease', plot_type = "boxplot")
+```
+
+Wizualna analiza korelacji. Rysuje różne wykresy, aby zilustrować informacje 
+tkwiące w dowolnej zmiennej liczbowej w stosunku do zmiennej docelowej.
+
+```{r}
+coord_plot(data=heart_disease, group_var="has_heart_disease", group_func=median)
+```
+
+Oblicza funkcję zdefiniowaną w parametrze 'group_func' dla grupy, aby 
+przeanalizować zachowanie każdego segmentu. Skaluje każdą wartość zmiennej do 
+zakresu od 0 do 1, aby łatwiwej porównać grupy. Oblicza również wartość 
+niezależnie od grupowania. Funkcja jest również przydatna do klasteryzacji.
+
+
+#### Scatter plots 
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Contigency tables   
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Other stats. (factor)
+
+```{r}
+categ_analysis(data_country, "country", "has_flu")
+```
+
+Funkcja zwraca wiele statystyk opierających się na zmiennej target dla wybranej innej zmiennej.
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+data_integrity_model(data = heart_disease, model_name = "pca")
+```
+
+To nie jest wprawdzie PCA, ale funkcja daje nam informacje co należy zmienić,
+aby zastosować model PCA.
+
+
+#### Stat. models  
+
+```{r}
+print('no coś jest, ale to nie konkretny model')
+```
+
+Do robienia konkretnych modelów nie ma żadnej funkcji. Jedyną funkcją związaną z modelowaniem jest 
+'data_integrity_model', która zwraca nam informacje potrzebne do przygotowania danych do konkretnego modelu.
+
+#### PCP        
+
+```{r}
+print('no nie ma nic')
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Scaling 
+
+```{r}
+range01(heart_disease$max_heart_rate)[1:10]
+```
+
+Przekształca zmienną do zakresu [0-1], przypisując 0 do minimum i 1 do maksimum zmiennej wejściowej. Wszystkie wartości 'NA' zostaną usunięte.
+
+#### Skewness   
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Outlier treatment  
+
+```{r}
+set.seed(10)
+df=data.frame(var1=rchisq(1000,df = 1), var2=rnorm(1000))
+df=rbind(df, 1135, 2432) # forcing outliers
+df$id=as.character(seq(1:1002))
+
+var1_treated=prep_outliers(data = df$var1, type='set_na', top_percent  = 0.01,method = "bottom_top")
+
+summary(df$var1)
+summary(var1_treated)
+```
+
+Funkcja 'prep_outliers' radzi sobie z wartościami odstającymi, ustawiając 'NA' lub „zatrzymując” je na pewnym poziomie.
+Istnieją trzy obsługiwane metody oznaczania wartości jako wartości odstających: 'bottom_top', 'tukey' i 'hampel'.
+Funkcja może przyjmować ramkę danych i zwraca te same dane oraz przekształcenia określone w parametrze wejściowym. Lub może przyjąć pojedynczy wektor i zwraca wektor.
+
+
+#### Binning  
+
+```{r}
+heart_disease$oldpeak_2 = discretize_rgr(input=heart_disease$oldpeak, target=heart_disease$has_heart_disease)
+head(select(heart_disease, oldpeak, oldpeak_2))
+summary(heart_disease$oldpeak_2)
+```
+
+Przekształca zmienną numeryczną w jedną kategoryczną, 
+biorąc pod uwagę związek ze zmienną docelową przez maksymalizację gain ratio.
+
+```{r}
+new_df=convert_df_to_categoric(data=heart_disease, n_bins=5)
+df_status(new_df)
+```
+
+Konwertuje wszystkie zmienne obecne w zbiorze danych na zmienna kategoryczną. 
+Konwersja kryteriów opiera się na dwóch funkcjach, 'discretize_get_bins' i 
+'discretize_df', które dyskretyzują wszystkie zmienne numeryczne oparte na 
+kryteriach równej częstotliwości, z liczbą przedziałów równą 'n_bins'.
+
+#### Merging levels     
+
+```{r}
+auto_grouping(data=data_country, input='country', target="has_flu", n_groups=8)
+```
+
+Zmniejsza liczbę leveli zmiennej wejściowej w oparciu o zmienną docelową 
+- target - na podstawie m. in. dokładności,
+ zarówno dla zmiennej wejściowej, jak i docelowej. 
+Wykorzystuje model klasteryzacji do tworzenia nowych leveli.
+
+### Reporting  
+
+#### Reports
+
+```{r}
+print('no nie ma nic')
+```
+
+#### Saving outputs        
+
+```{r}
+print('no nie ma nic')
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |  Yes   |
+|            | Dimensions            |  No    |
+|            | Other info            |  Yes   |
+|            | Compare datasets      |  Yes   |
+|  Validity  | Missing values        |  Yes   |
+|            | Redundant col.        |  No    |
+|            | Outliers              |  Yes   |
+|            | Atypical values       |  No    |
+|            | Level encoding        |  No    |
+|   Univar.  | Descriptive stat.     |  Yes   |
+|            | Histograms            |  Yes   |
+|            | Other dist. plots     |  No    |
+|            | Bar plots             |  Yes   |
+|            | QQ plots              |  No    |      
+|   Bivar.   | Descriptive stat.     |  Yes   |       
+|            | Correlation matrix    |  No    |
+|            | 1 vs each corr.       |  Yes   |
+|            | Time-dependency       |  No    |             
+|            | Bar plots by target   |  Yes   |
+|            | Num. plots by target  |  Yes   |
+|            | Scatter plots         |  No    |
+|            | Contigency tables     |  No    |
+|            | Other stats. (factor) |  Yes   |
+|  Multivar. | PCA                   |  No    |      
+|            | Stat. models          |  No    |
+|            | PCP                   |  No    |
+| Transform. | Imputation            |  No    |
+|            | Scaling               |  Yes   |
+|            | Skewness              |  No    |
+|            | Outlier treatment     |  Yes   |
+|            | Binning               |  Yes   |
+|            | Merging levels        |  Yes   |
+|  Reporting | Reports               |  No    |
+|            | Saving outputs        |  No    |  
