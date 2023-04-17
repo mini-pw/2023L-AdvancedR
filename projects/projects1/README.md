@@ -73,3 +73,147 @@ Oddanie tej części będzie polegało na wypełnieniu *Ankiety o zbiorze danych
 
 
 
+## Część 2 (25p = 7 x 3p + 4p)  
+W tej części podejmiemy próbę zweryfikowania już istniejących rozwiązań do AutoEDA. Każdy dostanie przydzielony pakiet oraz zadanie (regresja/klasyfikacja) dla którego będzie należało wypełnić tablę (patrz niżej *Funkcjonalności*) oraz w przypadku gdy dany pakiet zawiera te funkcjonalności należy zamieści kod z przykładem użycia. Pakiety, które bierzemy pod uwagę są wymienione poniżej.
+
+#### Pakiety:
+- arsenal
+- DataExplorer
+- ExPanDaR
+- explore	
+- funModeling
+- inspectdf
+- SmartEDA
+- summarytools
+- visdat
+- dlookr
+
+
+#### Funkcjonalności:
+
+<table style="undefined;table-layout: fixed; width: 349px">
+<colgroup>
+<col style="width: 129.116667px">
+<col style="width: 220.116667px">
+</colgroup>
+<thead>
+  <tr>
+    <th>Task type</th>
+    <th>Task</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="4">Dataset</td>
+    <td>Variable types</td>
+  </tr>
+  <tr>
+    <td>Dimensions</td>
+  </tr>
+  <tr>
+    <td>Other info </td>
+  </tr>
+  <tr>
+    <td>Compare datasets</td>
+  </tr>
+  <tr>
+    <td rowspan="5">Validity</td>
+    <td>Missing values</td>
+  </tr>
+  <tr>
+    <td>Redundant col.</td>
+  </tr>
+  <tr>
+    <td>Outliers</td>
+  </tr>
+  <tr>
+    <td>Atypical values</td>
+  </tr>
+  <tr>
+    <td>Level encoding</td>
+  </tr>
+  <tr>
+    <td rowspan="5">Univar.</td>
+    <td>Descriptive stat.</td>
+  </tr>
+  <tr>
+    <td>Histograms</td>
+  </tr>
+  <tr>
+    <td>Other dist. plots</td>
+  </tr>
+  <tr>
+    <td>Bar plots</td>
+  </tr>
+  <tr>
+    <td>QQ plots</td>
+  </tr>
+  <tr>
+    <td rowspan="9">Bivar.</td>
+    <td>Descriptive stat.</td>
+  </tr>
+  <tr>
+    <td>Correlation matrix</td>
+  </tr>
+  <tr>
+    <td>1 vs each corr.</td>
+  </tr>
+  <tr>
+    <td>Time-dependency<br></td>
+  </tr>
+  <tr>
+    <td>Bar plots by target</td>
+  </tr>
+  <tr>
+    <td>Num. plots by target</td>
+  </tr>
+  <tr>
+    <td>Scatter plots</td>
+  </tr>
+  <tr>
+    <td>Contigency tables</td>
+  </tr>
+  <tr>
+    <td>Other stats. (factor)</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Multivar.</td>
+    <td>PCA</td>
+  </tr>
+  <tr>
+    <td>Stat. models</td>
+  </tr>
+  <tr>
+    <td>PCP</td>
+  </tr>
+  <tr>
+    <td rowspan="6">Transform.</td>
+    <td>Imputation</td>
+  </tr>
+  <tr>
+    <td>Scaling</td>
+  </tr>
+  <tr>
+    <td>Skewness</td>
+  </tr>
+  <tr>
+    <td>Outlier treatment</td>
+  </tr>
+  <tr>
+    <td>Binning</td>
+  </tr>
+  <tr>
+    <td>Merging levels</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Reporting</td>
+    <td>Reports</td>
+  </tr>
+  <tr>
+    <td>Saving outputs</td>
+  </tr>
+</tbody>
+</table>
+
+
+

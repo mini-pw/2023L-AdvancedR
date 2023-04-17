@@ -1,0 +1,184 @@
+---
+title: "Projekt 1.2"
+author: "Maciej Orsłowski"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: arsenal
+# Zadanie: regresja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+library(arsenal)
+library(dplyr)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+I am using the Sydney Houses dataset.
+
+```{r}
+path_to_data <- '../dataset_proj/datasets/sydney_house_prices_regression.csv'
+df <- read.csv(path_to_data)
+head(df, n = 10)
+```
+
+#### Compare datasets 
+
+```{r}
+summary(comparedf(head(df, n = 200), iris))
+```
+
+### Validity
+
+#### Missing values
+
+The library provides two functions related to missing values: `allNa` & 
+`includeNA`. The former tests whether all values in a given vector are `NA`
+while the latter replaces all `NA` values in a given vector with a 
+specified value
+
+```{r}
+allNA(df)
+allNA(c(NA, NA, NA))
+allNA(c(NA, 1, NA))
+
+vector_with_na <- c(10, 25, NA, 100, NA)
+includeNA(vector_with_na, label = -1)
+```
+
+#### Atypical values 
+
+A `freqlist` function can be useful for detecting duplicate rows or fragments
+of rows in a dataframe. Since it counts how many times a certain combination
+of variable values occurs in a dataframe it can also be used to identify
+atypical values.
+Note that it can get extremely slow when passingcharacter variables 
+(it froze my laptop when I tried to pass an entire dataframe)
+
+```{r}
+tab <- table(df %>% select('bed', 'bath', 'car'))
+frlist <- freqlist(tab)
+head(summary(frlist))
+
+frlist <- freqlist(~ bed + bath + car, data = df)
+head(summary(frlist))
+```
+
+### Univar.
+
+This package doesn't provide any tools related to this category.
+
+### Bivar.
+
+
+#### Time-dependency
+
+The package provides a `paired` function which can compare observations taken
+from two different time points. Since it requires a very specific data frame
+format, I decided to manually add columns to the Sydney Houses data that are
+necessary for the function to work. Note that these added columns do not make 
+any logical sense in this data - their only purpose is to make `paired`
+return any output
+
+```{r}
+df_with_time <- head(df, n = 1000)
+df_with_time$time_point <- rep(c(1, 2), length.out = 1000)
+df_with_time$id <- c(1:500, 500:1)
+p <- paired(time_point ~ car + bath + bed + sellPrice, data = df_with_time, id = id, na.action = na.paired("fill"))
+summary(p)
+```
+
+#### Contigency tables
+
+A `tableby` function can generate contingency tables for two or more
+variables. The first variable (one on the left of the formula) has to be a
+categorical variable. Variables on the right side will be summarised in groups
+defined by the first variable
+
+```{r}
+t <- tableby(propType ~ bed + suburb, data = head(df, 200))
+summary(t)
+```
+
+### Multivar.  
+
+#### Stat. models 
+
+A `modelsum` function can be used to fit simple statistical models. It seems
+to be a kind of merge of `lm` and `glm`.
+
+The library also provides a function `formulize` that can generate formulas 
+from vectors of variable names. 
+It can be especially useful when generating formulas dynamically.
+
+```{r}
+y <- 'sellPrice'
+x <- c('bed', 'car', 'bath')
+modelsum(formulize(y, x), data = df)
+
+# above code is equivalent to:
+# modelsum(sellPrice ~ bed + car + bath, data = df)
+```
+
+### Reporting
+
+#### Saving outputs        
+
+The package comes with a `write2` function that can be used to output
+tables to a HTML, PDF or a Word file. I couldn't get it to work though
+(it would always generate an empty file without showing any errors)
+
+```{r}
+# output <- comparedf(head(df, 200), iris)
+# write2html(output, 'file.html')
+# write2pdf(output, 'file.pdf')
+# write2word(output, 'file.doc')
+```
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |  No    |
+|            | Dimensions            |  No    |
+|            | Other info            |  No    |
+|            | Compare datasets      |  Yes   |
+|  Validity  | Missing values        |  Yes   |
+|            | Redundant col.        |  No    |
+|            | Outliers              |  No    |
+|            | Atypical values       |  Yes   |
+|            | Level encoding        |  No    |
+|   Univar.  | Descriptive stat.     |  No    |
+|            | Histograms            |  No    |
+|            | Other dist. plots     |  No    |
+|            | Bar plots             |  No    |
+|            | QQ plots              |  No    |      
+|   Bivar.   | Descriptive stat.     |  No    |       
+|            | Correlation matrix    |  No    |
+|            | 1 vs each corr.       |  No    |
+|            | Time-dependency       |  Yes   |             
+|            | Bar plots by target   |  No    |
+|            | Num. plots by target  |  No    |
+|            | Scatter plots         |  No    |
+|            | Contigency tables     |  Yes   |
+|            | Other stats. (factor) |  No    |
+|  Multivar. | PCA                   |  No    |      
+|            | Stat. models          |  Yes   |
+|            | PCP                   |  No    |
+| Transform. | Imputation            |  No    |
+|            | Scaling               |  No    |
+|            | Skewness              |  No    |
+|            | Outlier treatment     |  No    |
+|            | Binning               |  No    |
+|            | Merging levels        |  No    |
+|  Reporting | Reports               |  No    |
+|            | Saving outputs        |  Yes   |  

@@ -1,0 +1,368 @@
+---
+title: "Projekt 1.2"
+author: "Marta Szuwarska"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Pakiet: explore
+# Zadanie: regresja
+
+
+```{r}
+#tutaj ładuje wszystkie potrzebne biblioteki
+library(explore)
+library(dplyr)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+df <- read.csv("Project1/power_plant.csv")
+```
+
+#### Variable types
+
+Za pomocą describe widzimy typy wszystkich zmiennych w tabeli. To samo można osiągnąć, patrząc na zakładkę Overview w aplikacji shiny otwierającej się za pomocą explore.
+```{r}
+describe(df)
+#explore(df)
+```
+
+#### Dimensions
+
+Za pomocą explore_tbl widzimy liczność zmiennych na wykresie, a za pomocą describe_tbl widzimy krótkie podsumowanie liczności zmiennych. Można też spojrzeć na zakładkę Overview a aplikacji shiny otwierającej się za pomocą explore.
+
+```{r}
+explore_tbl(df)
+describe_tbl(df)
+#explore(df)
+```
+
+#### Other info
+
+Funkcja describe dodatkowo podaje informacje o brakach, ich procencie, liczbie unikalnych wartości, minimum, średniej i maksimum.
+
+```{r}
+describe(df)
+#explore(df)
+```
+
+#### Compare datasets
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+### Validity
+
+#### Missing values 
+
+Za pomocą describe można sprawdzić liczbę braków dla każdej zmiennej. Natomiast describe_tbl pokazuje łączną liczbę obserwacji z brakami i zmiennych z brakami. Dodatkowo te informacje można też znaleźć w aplikacji shiny otwieranej przez explore.
+
+```{r}
+describe(df)
+describe_tbl(df)
+#explore(df)
+```
+
+#### Redundant col.
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Outliers 
+
+W aplikacji shiny otwieranej przez explore można zobaczyć wyliczone kwantyle (5,95,25,75).
+
+```{r}
+#explore(df)
+```
+
+
+#### Atypical values
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+
+#### Level encoding 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+Funkcja describe pokazuje dla każdej zmiennej liczbę unikalnych wartości, minimum, średnią i maksimum. To samo można zobaczyć w zakładce Overview aplikacji shiny otwieranej przez explore. W zakładce variable jest też dodatkowo mediana i kwantyle.
+
+```{r}
+describe(df)
+#explore(df)
+```
+
+#### Histograms 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+```
+
+#### Other dist. plots
+
+Dla zmiennych numerycznych explore tworzy wykresy gęstości.
+
+```{r}
+  explore(df,PE)
+```
+
+#### Bar plots 
+
+Dla zmiennych kategorycznych explore tworzy bar ploty.
+
+```{r}
+df %>% 
+  mutate(V = factor(V)) %>% 
+  explore(V)
+```
+
+#### QQ plots
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+```
+
+#### Correlation matrix 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+```
+
+#### 1 vs each corr.   
+
+Można uzyskać korelację dwóch zmiennych na boxplotach za pomocą explore.
+
+```{r}
+explore(df, PE, V)
+```
+
+#### Time-dependency
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Bar plots by target  
+
+Dla zmiennych kategorycznych przy pomocy explore niby da się zrobić bar ploty zależne od targetu, jednak nie za bardzo to działa, przynajmniej na tym zbiorze.
+
+```{r}
+df %>% 
+  mutate(V = factor(V)) %>% 
+  explore(V, target = PE)
+```
+
+#### Num. plots by target 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+```
+
+#### Scatter plots 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Contigency tables   
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Other stats. (factor)
+
+```{r}
+
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Stat. models  
+
+Funkcja explain_tree tworzy drzewa decyzyjne.
+
+```{r}
+explain_tree(df, target = PE)
+```
+
+#### PCP   
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+
+### Transform. 
+
+#### Imputation
+
+Za pomocą clean_var można zrobić imputację outlierów z wybranym zakresem i braków z wybraną wartością.
+
+```{r}
+df %>% 
+  clean_var(PE,
+            min_val = 431,
+            max_val = 483,
+            na = 451.5) %>% 
+  describe(PE)
+```
+
+#### Scaling 
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Skewness   
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Outlier treatment  
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Binning  
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+#### Merging levels     
+
+Pakiet nie oferuje funkcji służącej w tym celu.
+
+```{r}
+
+```
+
+### Reporting  
+
+#### Reports
+
+Do utworzenia raportu można użyć explore i kliknąć 'report all' w aplikacji shiny.
+
+```{r}
+#explore(df)
+```
+
+#### Saving outputs      
+
+Funkcja report zapisuje raport do pliku html.
+
+```{r}
+#report(df, output_file = "report.html", output_dir = getwd())
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |   Yes  |
+|            | Dimensions            |   Yes  |
+|            | Other info            |   Yes  |
+|            | Compare datasets      |   No   |
+|  Validity  | Missing values        |   Yes  |
+|            | Redundant col.        |   No   |
+|            | Outliers              |   Yes  |
+|            | Atypical values       |   No   |
+|            | Level encoding        |   No   |
+|   Univar.  | Descriptive stat.     |   Yes  |
+|            | Histograms            |   No   |
+|            | Other dist. plots     |   Yes  |
+|            | Bar plots             |   Yes  |
+|            | QQ plots              |   No   |      
+|   Bivar.   | Descriptive stat.     |   No   |       
+|            | Correlation matrix    |   No   |
+|            | 1 vs each corr.       |   Yes  |
+|            | Time-dependency       |   No   |             
+|            | Bar plots by target   |   No   |
+|            | Num. plots by target  |   No   |
+|            | Scatter plots         |   No   |
+|            | Contigency tables     |   No   |
+|            | Other stats. (factor) |   No   |
+|  Multivar. | PCA                   |   No   |      
+|            | Stat. models          |   Yes  |
+|            | PCP                   |   No   |
+| Transform. | Imputation            |   Yes  |
+|            | Scaling               |   No   |
+|            | Skewness              |   No   |
+|            | Outlier treatment     |   No   |
+|            | Binning               |   No   |
+|            | Merging levels        |   No   |
+|  Reporting | Reports               |   Yes  |
+|            | Saving outputs        |   Yes  | 
