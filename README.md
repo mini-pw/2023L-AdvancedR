@@ -129,8 +129,8 @@
   <tr>
     <td rowspan="4">9</td>
     <td rowspan="4">20-04</td>
-    <td rowspan="4">Praca z GitHub - zarządzanie projektem.</td>
-    <td rowspan="4">Ustalenia techniczne Projektu 2. <br>Zasady pracy.</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations target="_blank" rel="noopener noreferrer">Prezentacje studenckie.</a></td>
+    <td rowspan="4">Praca z GitHub - zarządzanie projektem. Ustalenia techniczne Projektu 2. <br>Zasady pracy.</td>
     <td rowspan="4"></td>
   </tr>
   <tr>
