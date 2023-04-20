@@ -64,7 +64,7 @@
   <tr>
     <td rowspan="4">4</td>
     <td rowspan="4">16-03</td>
-    <td rowspan="4">EDA &amp; AutoEDA</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/blob/main/projects/projects1/PROJEKT%201.pdf target="_blank" rel="noopener noreferrer">EDA &amp; AutoEDA</a></td>
     <td rowspan="4"><a href=https://rstudio.github.io/renv/articles/renv.html target="_blank" rel="noopener noreferrer">Reprodukowalność wyników.</a></td>
     <td rowspan="4">Konsultacje.</td>
   </tr>
