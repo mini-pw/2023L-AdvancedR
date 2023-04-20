@@ -77,7 +77,7 @@
   <tr>
     <td rowspan="4">5</td>
     <td rowspan="4">23-03</td>
-    <td rowspan="4">Prezentacje studenckie</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations target="_blank" rel="noopener noreferrer">Prezentacje studenckie</a></td>
     <td rowspan="4">Znajomość pakietów z rodziny tidyverse</td>
     <td rowspan="4">Oddanie P1.1</td>
   </tr>
@@ -116,7 +116,7 @@
   <tr>
     <td rowspan="4">8</td>
     <td rowspan="4">13-04</td>
-    <td rowspan="4">Prezentacje studenckie.</td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations target="_blank" rel="noopener noreferrer">Prezentacje studenckie.</a></td>
     <td rowspan="4">Tworzenie pakietów R - część 2.</td>
     <td rowspan="4">Oddanie P1.2</td>
   </tr>
