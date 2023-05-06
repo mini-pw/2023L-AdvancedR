@@ -181,8 +181,8 @@
   <tr>
     <td rowspan="4">13</td>
     <td rowspan="4">25-05</td>
-    <td rowspan="4"></td>
-    <td rowspan="4"></td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations target="_blank" rel="noopener noreferrer">Prezentacje studenckie</a></td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations target="_blank" rel="noopener noreferrer">Prezentacje studenckie</a></td>
     <td rowspan="4"></td>
   </tr>
   <tr>
@@ -194,7 +194,7 @@
   <tr>
     <td rowspan="4">14</td>
     <td rowspan="4">01-06</td>
-    <td rowspan="4"></td>
+    <td rowspan="4"><a href=https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations target="_blank" rel="noopener noreferrer">Prezentacje studenckie</a></td>
     <td rowspan="4"></td>
     <td rowspan="4"></td>
   </tr>
