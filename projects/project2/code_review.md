@@ -22,15 +22,15 @@ Code reviews pozwala również współpracownikom uczyć się od siebie nawzajem
 
 Code review powinien zawierać odpowiedzi na następujące pytania:
 
-   1) Czy ten kod realizuje cel autora?
-    2) Czy w kodzie są jakieś oczywiste błędy logiczne?
-    3) Patrząc na wymagania, czy wszystkie przypadki są w pełni zaimplementowane?
-    4) Czy kod jest zgodny z istniejącymi wytycznymi stylu?
-    5) Czy są jakieś obszary, w których kod mógłby zostać poprawiony? (skrócić, przyspieszyć, itp.)
-    6) Czy jest to najlepszy sposób na osiągnięcie pożądanego rezultatu?
-    7) Czy kod obsługuje wszystkie przypadki brzegowe?
-    8) Czy testy jednostkowe były odpowiednie?
-    9) Czy jest odpowiednia dokumentacja i komentarze?
+1) Czy ten kod realizuje cel autora?
+2) Czy w kodzie są jakieś oczywiste błędy logiczne?
+3) Patrząc na wymagania, czy wszystkie przypadki są w pełni zaimplementowane?
+4) Czy kod jest zgodny z istniejącymi wytycznymi stylu?
+5) Czy są jakieś obszary, w których kod mógłby zostać poprawiony? (skrócić, przyspieszyć, itp.)
+6) Czy jest to najlepszy sposób na osiągnięcie pożądanego rezultatu?
+7) Czy kod obsługuje wszystkie przypadki brzegowe?
+8) Czy testy jednostkowe były odpowiednie?
+9) Czy jest odpowiednia dokumentacja i komentarze?
 
 W przypadku, w którym osoba wykonująca przegląd kodu sugeruje zmianę zaleca się, aby podała uzasadniony powód.
 
