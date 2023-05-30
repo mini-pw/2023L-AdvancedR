@@ -1,0 +1,304 @@
+---
+title: "Projekt 1.2"
+author: "Arkadiusz Kniaź"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+# Pakiet: summarytools
+# Zadanie: regresja
+
+
+```{r}
+#komentarz
+#patrzac na github i fakt ze nie bylo w nim nic robione od 5 # miesiency troche slabe wrazenie robi ten pakiet
+# napotatkalem na blad przy prubie uzycia funkcji ctable 
+# i po malym research znalazlem issue na gitub z komentarzem #https://github.com/dcomtois/summarytools/issues/178
+#"A fix for this has been available already for a long time. #Install the package from GitHub, if you want the fix. #Hopefully version 1.0.2 of the package, containing the fix, #will be released soon."
+#probowalem pobrac wersje z github i blad nadal wystepowal a #wersji 1.0.2 nie widac na horyzoncie 
+#niepolecam, jezeli ktos chcialby uzyc funkcji ctable()
+# co do pozostalych funkcji ktorych  uzywalem - dzialaly.
+#tutaj ładuje wszystkie potrzebne biblioteki
+library(summarytools)
+library(readr)
+day <- read_csv("day.csv")
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview of functionalities
+
+### Dataset
+
+```{r}
+print(head(day))
+```
+
+#### Variable types
+
+```{r}
+view(dfSummary(day))
+```
+
+#### Dimensions
+
+```{r}
+view(dfSummary(day))
+```
+
+#### Other info
+
+```{r}
+view(dfSummary(day))
+```
+
+#### Compare datasets
+
+```{r}
+
+```
+
+### Validity
+
+#### Missing values 
+
+```{r}
+view(dfSummary(day))
+```
+
+#### Redundant col.
+
+```{r}
+view(dfSummary(day))
+```
+
+#### Outliers 
+
+```{r}
+
+```
+
+
+#### Atypical values
+
+```{r}
+
+```
+
+
+#### Level encoding 
+
+```{r}
+
+```
+
+### Univar.
+
+#### Descriptive stat.
+
+```{r}
+view(dfSummary(day))
+view(descr(day))
+```
+
+#### Histograms 
+
+```{r}
+view(dfSummary(day))
+```
+
+#### Other dist. plots
+
+```{r}
+
+```
+
+#### Bar plots 
+
+```{r}
+view(dfSummary(day))
+```
+
+#### QQ plots
+
+```{r}
+
+```
+
+### Bivar.     
+
+#### Descriptive stat.
+
+```{r}
+#chyba ctable(ctable(x = day$yr, y = day$holiday)) to #powinna robic ale nie dane mi bylo tego sprawdzic
+
+```
+
+#### Correlation matrix 
+
+```{r}
+
+```
+
+#### 1 vs each corr.   
+
+```{r}
+
+```
+
+#### Time-dependency  
+
+```{r}
+
+```
+
+#### Bar plots by target  
+
+```{r}
+
+```
+
+#### Num. plots by target 
+
+```{r}
+
+```
+
+#### Scatter plots 
+
+```{r}
+
+```
+
+#### Contigency tables   
+
+```{r}
+#chyba ctable(ctable(x = day$yr, y = day$holiday)) to #powinna robic ale nie dane mi bylo tego sprawdzic
+```
+
+#### Other stats. (factor)
+
+```{r}
+
+```
+
+
+### Multivar.  
+
+#### PCA 
+
+```{r}
+
+```
+
+#### Stat. models  
+
+```{r}
+
+```
+
+#### PCP        
+
+```{r}
+
+```
+
+
+### Transform. 
+
+#### Imputation
+
+```{r}
+
+```
+
+#### Scaling 
+
+```{r}
+
+```
+
+#### Skewness   
+
+```{r}
+
+```
+
+#### Outlier treatment  
+
+```{r}
+
+```
+
+#### Binning  
+
+```{r}
+
+```
+
+#### Merging levels     
+
+```{r}
+
+```
+
+### Reporting  
+
+#### Reports
+
+```{r}
+#nie jestem pewien czy to wystarczy w tym zadaniu ale cos jest
+#view(dfSummary(day))
+```
+
+#### Saving outputs        
+
+```{r}
+print(dfSummary(day),
+      file = "test.html",
+      report.title = "test")
+```
+
+
+
+## Summary
+
+|  Task type | Task                  | Yes/No |
+|:----------:|-----------------------|--------|
+|   Dataset  | Variable types        |    Yes |
+|            | Dimensions            |    Yes |
+|            | Other info            |    Yes |
+|            | Compare datasets      |    No  |
+|  Validity  | Missing values        |    Yes |
+|            | Redundant col.        |    Yes |
+|            | Outliers              |    No  |
+|            | Atypical values       |    No  |
+|            | Level encoding        |    No  |
+|   Univar.  | Descriptive stat.     |    Yes |
+|            | Histograms            |    Yes |
+|            | Other dist. plots     |    No  |
+|            | Bar plots             |    Yes |
+|            | QQ plots              |    No  |      
+|   Bivar.   | Descriptive stat.     |    Yes |       
+|            | Correlation matrix    |    No  |
+|            | 1 vs each corr.       |    No  |
+|            | Time-dependency       |    No  |             
+|            | Bar plots by target   |    No  |
+|            | Num. plots by target  |    No  |
+|            | Scatter plots         |    No  |
+|            | Contigency tables     |    Yes |
+|            | Other stats. (factor) |    No  |
+|  Multivar. | PCA                   |    No  |      
+|            | Stat. models          |    No  |
+|            | PCP                   |    No  |
+| Transform. | Imputation            |    No  |
+|            | Scaling               |    No  |
+|            | Skewness              |    No  |
+|            | Outlier treatment     |    No  |
+|            | Binning               |    No  |
+|            | Merging levels        |    No  |
+|  Reporting | Reports               |    Yes |
+|            | Saving outputs        |    Yes |  

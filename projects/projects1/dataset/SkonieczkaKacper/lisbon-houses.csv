@@ -1,0 +1,247 @@
+Id,Condition,PropertyType,PropertySubType,Bedrooms,Bathrooms,AreaNet,AreaGross,Parking,Latitude,Longitude,Country,District,Municipality,Parish,Price M2,Price
+101,Used,Homes,Apartment,3,1,76,152,0,38.7792,-9.1186,Portugal,Lisboa,Lisboa,Olivais,2463,198000
+102,Used,Homes,Duplex,5,3,190,380,0,38.7056,-9.1784,Portugal,Lisboa,Lisboa,Alcantara,3125,1270000
+103,Used,Homes,Apartment,1,1,26,52,0,38.7058,-9.1639,Portugal,Lisboa,Lisboa,Estrela,4005,140000
+104,Used,Homes,Apartment,5,4,185,370,0,38.7466,-9.1640,Portugal,Lisboa,Lisboa,Sao Domingos de Benfica,3412,995000
+105,Used,Homes,Apartment,7,1,150,300,0,38.7323,-9.1287,Portugal,Lisboa,Lisboa,Arroios,3277,570000
+106,Used,Homes,Apartment,3,2,95,190,0,38.6965,-9.2099,Portugal,Lisboa,Lisboa,Belem,3542,425000
+107,Used,Homes,Apartment,3,1,76,152,0,38.7544,-9.1129,Portugal,Lisboa,Lisboa,Marvila,2881,130000
+108,Used,Homes,Apartment,3,1,81,162,0,38.7561,-9.1796,Portugal,Lisboa,Lisboa,Sao Domingos de Benfica,3412,215000
+109,Used,Homes,Apartment,2,1,58,116,0,38.7792,-9.1186,Portugal,Lisboa,Lisboa,Olivais,2463,196000
+110,Used,Homes,Apartment,5,3,286,572,0,38.7632,-9.1687,Portugal,Lisboa,Lisboa,Lumiar,2927,925000
+111,Used,Homes,Apartment,2,1,68,136,0,38.7449,-9.1209,Portugal,Lisboa,Lisboa,Marvila,2881,170000
+112,Used,Homes,Apartment,3,2,97,194,0,38.7077,-9.2059,Portugal,Lisboa,Lisboa,Belem,3542,440000
+113,Used,Homes,Apartment,2,2,72,144,0,38.7122,-9.1299,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,235000
+114,Used,Homes,Apartment,3,2,120,240,0,38.7796,-9.0938,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,565000
+115,Used,Homes,Apartment,1,1,65,130,0,38.7807,-9.1628,Portugal,Lisboa,Lisboa,Santa Clara,2393,217000
+116,Used,Homes,Apartment,4,2,137,274,0,38.7463,-9.1439,Portugal,Lisboa,Lisboa,Alvalade,3623,450000
+117,Used,Homes,Apartment,1,1,63,126,0,38.7269,-9.1649,Portugal,Lisboa,Lisboa,Campolide,3036,115000
+118,Used,Homes,Apartment,2,1,70,140,0,38.7102,-9.1491,Portugal,Lisboa,Lisboa,Misericordia,5112,490000
+119,Used,Homes,Apartment,3,2,101,202,0,38.7622,-9.1536,Portugal,Lisboa,Lisboa,Lumiar,2927,350000
+120,Used,Homes,Apartment,2,1,56,112,0,38.7842,-9.1660,Portugal,Lisboa,Lisboa,Santa Clara,2393,178000
+121,Used,Homes,Apartment,3,2,90,180,0,38.7445,-9.1913,Portugal,Lisboa,Lisboa,Benfica,2727,249000
+122,Used,Homes,Apartment,2,1,66,132,0,38.7172,-9.1349,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,155000
+123,Used,Homes,Apartment,4,2,158,316,0,38.7118,-9.1328,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,1350000
+124,Used,Homes,Apartment,1,1,78,156,0,38.7297,-9.1337,Portugal,Lisboa,Lisboa,Penha de Franca,2973,199900
+125,Used,Homes,Apartment,4,2,117,234,0,38.7335,-9.1363,Portugal,Lisboa,Lisboa,Arroios,3277,450000
+126,Used,Homes,Apartment,3,1,100,200,0,38.7395,-9.1327,Portugal,Lisboa,Lisboa,Arroios,3277,390000
+127,Used,Homes,Apartment,3,3,153,306,0,38.7568,-9.0944,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,660000
+128,Used,Homes,Apartment,2,2,76,152,0,38.7523,-9.2049,Portugal,Lisboa,Lisboa,Benfica,2727,275000
+129,Used,Homes,Apartment,4,2,110,220,0,38.7321,-9.1284,Portugal,Lisboa,Lisboa,Penha de Franca,2973,320000
+130,Used,Homes,Apartment,1,1,60,120,0,38.7116,-9.1647,Portugal,Lisboa,Lisboa,Estrela,4005,110000
+131,Used,Homes,Apartment,2,1,60,120,0,38.7116,-9.1647,Portugal,Lisboa,Lisboa,Estrela,4005,179000
+132,Used,Homes,Apartment,1,1,30,60,0,38.7116,-9.1647,Portugal,Lisboa,Lisboa,Estrela,4005,125000
+133,Used,Homes,Apartment,2,1,60,120,0,38.7116,-9.1647,Portugal,Lisboa,Lisboa,Estrela,4005,179000
+134,Used,Homes,Apartment,2,1,50,100,0,38.7127,-9.1654,Portugal,Lisboa,Lisboa,Estrela,4005,168000
+135,Used,Homes,Apartment,2,1,68,136,0,38.7429,-9.1039,Portugal,Lisboa,Lisboa,Marvila,2881,125000
+136,Used,Homes,Apartment,3,1,100,200,0,38.7618,-9.1685,Portugal,Lisboa,Lisboa,Lumiar,2927,375000
+137,Used,Homes,Apartment,2,1,64,128,0,38.7096,-9.1462,Portugal,Lisboa,Lisboa,Misericordia,5112,190000
+138,Used,Homes,Apartment,1,1,29,58,0,38.7147,-9.1333,Portugal,Lisboa,Lisboa,Sao Vicente,3402,85000
+139,Used,Homes,Apartment,1,1,29,58,0,38.7147,-9.1333,Portugal,Lisboa,Lisboa,Sao Vicente,3402,90000
+140,Used,Homes,Apartment,4,1,110,220,0,38.7218,-9.1367,Portugal,Lisboa,Lisboa,Arroios,3277,325000
+141,Used,Homes,Apartment,4,2,109,218,0,38.7675,-9.1606,Portugal,Lisboa,Lisboa,Lumiar,2927,300000
+142,Used,Homes,Apartment,3,1,79,158,0,38.7276,-9.1661,Portugal,Lisboa,Lisboa,Campolide,3036,390000
+143,Used,Homes,Apartment,3,2,130,260,0,38.7353,-9.1560,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,750000
+144,Used,Homes,Apartment,8,6,299,598,0,38.7420,-9.1469,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,1700000
+145,Used,Homes,Apartment,2,1,68,136,0,38.7290,-9.1373,Portugal,Lisboa,Lisboa,Arroios,3277,295000
+146,Used,Homes,Apartment,2,1,61,122,0,38.7265,-9.1177,Portugal,Lisboa,Lisboa,Penha de Franca,2973,213500
+147,Used,Homes,Apartment,3,3,195,390,0,38.7386,-9.1677,Portugal,Lisboa,Lisboa,Campolide,3036,875000
+148,Used,Homes,Apartment,3,1,105,210,0,38.7491,-9.1420,Portugal,Lisboa,Lisboa,Alvalade,3623,350000
+149,Used,Homes,Apartment,1,1,57,114,0,38.7118,-9.1453,Portugal,Lisboa,Lisboa,Misericordia,5112,295000
+150,Used,Single Habitation,Dwelling,5,3,190,380,0,38.7723,-9.1198,Portugal,Lisboa,Lisboa,Olivais,2463,850000
+151,Used,Single Habitation,Isolated Villa,11,6,573,1146,0,38.7497,-9.1347,Portugal,Lisboa,Lisboa,Alvalade,3623,1750000
+156,New,Homes,Penthouse,3,3,230,460,0,38.7351,-9.1472,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,1375000
+157,New,Homes,Apartment,1,1,38,76,0,38.7169,-9.1344,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,350000
+158,New,Homes,Apartment,1,1,32,64,0,38.7169,-9.1344,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,255000
+159,New,Homes,Apartment,1,1,48,96,0,38.7169,-9.1344,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,355000
+160,New,Homes,Duplex,1,1,41,82,0,38.7253,-9.1296,Portugal,Lisboa,Lisboa,Penha de Franca,2973,295000
+161,New,Homes,Apartment,2,2,111,222,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,778000
+162,New,Homes,Apartment,2,2,87,174,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,665000
+163,New,Homes,Apartment,2,2,87,174,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,665000
+164,New,Homes,Apartment,2,2,93,186,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,705000
+165,New,Homes,Apartment,2,2,82,164,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,627000
+166,New,Homes,Apartment,2,2,80,160,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,598000
+167,New,Homes,Apartment,2,2,69,138,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,515000
+168,New,Homes,Apartment,2,2,69,138,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,515000
+169,New,Homes,Apartment,1,1,47,94,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,349000
+170,New,Homes,Apartment,1,1,47,94,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,349000
+171,New,Homes,Apartment,1,1,48,96,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,365000
+172,New,Homes,Apartment,1,1,50,100,0,38.7176,-9.1527,Portugal,Lisboa,Lisboa,Santo Antonio,5340,275000
+173,New,Homes,Apartment,2,2,93,186,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,705000
+174,New,Homes,Apartment,1,1,41,82,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,315000
+175,New,Homes,Apartment,1,1,47,94,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,349000
+176,New,Homes,Apartment,1,1,48,96,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,365000
+177,New,Homes,Apartment,1,1,41,82,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,315000
+178,New,Homes,Apartment,1,1,48,96,1,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,365000
+179,New,Homes,Apartment,2,2,80,160,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,598000
+180,New,Homes,Apartment,3,3,121,242,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,892000
+181,New,Homes,Apartment,2,2,82,164,2,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,627000
+182,New,Homes,Apartment,3,3,152,304,3,38.7214,-9.1607,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,1100000
+183,New,Homes,Apartment,3,3,152,304,1,38.6963,-9.2202,Portugal,Lisboa,Lisboa,Belem,3542,910000
+184,New,Homes,Apartment,3,3,157,314,1,38.6963,-9.2202,Portugal,Lisboa,Lisboa,Belem,3542,910000
+185,New,Homes,Apartment,3,4,176,352,0,38.6963,-9.2202,Portugal,Lisboa,Lisboa,Belem,3542,1350000
+186,New,Homes,Apartment,2,2,80,160,0,38.7221,-9.1460,Portugal,Lisboa,Lisboa,Arroios,3277,745000
+187,New,Homes,Apartment,1,1,95,190,0,38.7201,-9.1293,Portugal,Lisboa,Lisboa,Sao Vicente,3402,349000
+188,New,Homes,Apartment,0,1,52,104,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,285000
+189,New,Homes,Apartment,2,1,139,278,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,715000
+190,New,Homes,Apartment,3,3,204,408,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,950000
+191,New,Homes,Apartment,2,1,145,290,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,740000
+192,New,Homes,Apartment,3,3,227,454,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,960000
+193,New,Homes,Apartment,3,3,174,348,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,1000000
+194,New,Homes,Apartment,3,3,139,278,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,810000
+195,New,Homes,Apartment,3,3,202,404,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,1030000
+196,New,Homes,Apartment,3,3,202,404,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,825000
+197,New,Homes,Apartment,3,3,193,386,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,995000
+198,New,Homes,Apartment,3,3,161,322,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,805000
+199,New,Homes,Apartment,3,3,195,390,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,970000
+200,New,Homes,Apartment,3,3,195,390,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,990000
+201,New,Homes,Apartment,3,3,227,454,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,960000
+202,New,Homes,Apartment,3,3,217,434,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,835000
+203,New,Homes,Apartment,3,3,161,322,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,805000
+204,New,Homes,Apartment,4,4,273,546,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,1300000
+205,New,Homes,Apartment,4,4,223,446,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,1250000
+206,New,Homes,Apartment,3,3,180,360,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,975000
+207,New,Homes,Apartment,2,2,140,280,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,785000
+208,New,Homes,Apartment,2,3,76,152,0,38.7214,-9.1305,Portugal,Lisboa,Lisboa,Sao Vicente,3402,659000
+209,New,Homes,Apartment,3,2,206,412,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,920000
+210,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,500000
+211,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,510000
+212,New,Homes,Apartment,1,1,76,152,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,515000
+213,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,500000
+214,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,500000
+215,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,450000
+216,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,475000
+217,New,Homes,Apartment,1,1,76,152,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,515000
+218,New,Homes,Apartment,2,1,152,304,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,700000
+219,New,Homes,Apartment,2,1,145,290,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,725000
+220,New,Homes,Apartment,2,1,145,290,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,740000
+221,New,Homes,Apartment,2,1,139,278,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,715000
+222,New,Homes,Apartment,2,1,139,278,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,685000
+223,New,Homes,Apartment,2,1,139,278,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,700000
+224,New,Homes,Apartment,2,1,139,278,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,715000
+225,New,Homes,Apartment,2,1,145,290,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,725000
+226,New,Homes,Apartment,1,1,79,158,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,500000
+227,New,Homes,Apartment,2,1,152,304,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,700000
+228,New,Homes,Apartment,2,1,187,374,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,775000
+229,New,Homes,Apartment,3,2,210,420,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,975000
+230,New,Homes,Apartment,3,2,175,350,0,38.7458,-9.0978,Portugal,Lisboa,Lisboa,Marvila,2881,785000
+231,New,Homes,Studio,0,2,48,96,0,38.7137,-9.1280,Portugal,Lisboa,Lisboa,Sao Vicente,3402,220000
+232,New,Homes,Studio,0,1,41,82,0,38.7137,-9.1280,Portugal,Lisboa,Lisboa,Sao Vicente,3402,225000
+233,New,Homes,Apartment,1,1,42,84,0,38.7137,-9.1280,Portugal,Lisboa,Lisboa,Sao Vicente,3402,295000
+234,New,Homes,Apartment,1,1,42,84,0,38.7137,-9.1280,Portugal,Lisboa,Lisboa,Sao Vicente,3402,265000
+235,New,Homes,Apartment,1,1,42,84,0,38.7137,-9.1280,Portugal,Lisboa,Lisboa,Sao Vicente,3402,270000
+236,New,Homes,Apartment,1,0,37,74,0,38.7137,-9.1280,Portugal,Lisboa,Lisboa,Sao Vicente,3402,320000
+237,New,Homes,Apartment,2,2,100,200,0,38.7338,-9.1321,Portugal,Lisboa,Lisboa,Arroios,3277,420000
+238,New,Homes,Apartment,3,2,90,180,0,38.7176,-9.1472,Portugal,Lisboa,Lisboa,Santo Antonio,5340,620000
+239,New,Homes,Apartment,3,2,97,194,0,38.7092,-9.1315,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,634000
+240,New,Homes,Apartment,3,3,163,326,0,38.7430,-9.0998,Portugal,Lisboa,Lisboa,Marvila,2881,699000
+241,New,Homes,Apartment,3,3,163,326,0,38.7454,-9.1006,Portugal,Lisboa,Lisboa,Marvila,2881,752178
+242,New,Homes,Apartment,3,3,163,326,0,38.7454,-9.1006,Portugal,Lisboa,Lisboa,Marvila,2881,804678
+243,New,Homes,Apartment,2,3,145,290,0,38.7099,-9.2083,Portugal,Lisboa,Lisboa,Ajuda,3137,650000
+244,New,Homes,Apartment,2,2,65,130,0,38.7199,-9.1327,Portugal,Lisboa,Lisboa,Sao Vicente,3402,360000
+245,New,Homes,Apartment,4,3,173,346,0,38.7685,-9.1849,Portugal,Lisboa,Lisboa,Carnide,3027,650000
+246,New,Homes,Apartment,3,5,185,370,0,38.7323,-9.1521,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,1299000
+247,New,Homes,Apartment,2,3,74,148,0,38.7098,-9.1497,Portugal,Lisboa,Lisboa,Estrela,4005,490000
+248,New,Homes,Apartment,2,3,74,148,0,38.7098,-9.1497,Portugal,Lisboa,Lisboa,Estrela,4005,490000
+249,New,Homes,Duplex,6,5,336,672,0,38.7116,-9.1303,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,4150000
+250,New,Homes,Apartment,6,5,359,718,0,38.7719,-9.1553,Portugal,Lisboa,Lisboa,Lumiar,2927,1650000
+251,New,Homes,Duplex,5,4,225,450,0,38.7451,-9.1790,Portugal,Lisboa,Lisboa,Sao Domingos de Benfica,3412,1450000
+252,As New,Homes,Apartment,4,2,170,340,0,38.6987,-9.2244,Portugal,Lisboa,Lisboa,Belem,3542,560000
+253,As New,Homes,Apartment,1,1,45,90,0,38.7066,-9.1744,Portugal,Lisboa,Lisboa,Alcantara,3125,199900
+254,As New,Homes,Apartment,1,1,135,270,0,38.7115,-9.1417,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,1499000
+255,As New,Homes,Apartment,4,4,245,490,0,38.7536,-9.1500,Portugal,Lisboa,Lisboa,Alvalade,3623,1500000
+256,As New,Homes,Apartment,2,1,91,182,0,38.7271,-9.1207,Portugal,Lisboa,Lisboa,Penha de Franca,2973,295000
+257,As New,Homes,Apartment,3,2,100,200,0,38.7219,-9.1349,Portugal,Lisboa,Lisboa,Arroios,3277,375000
+258,As New,Homes,Apartment,1,2,75,150,0,38.7110,-9.1685,Portugal,Lisboa,Lisboa,Estrela,4005,430000
+259,As New,Homes,Apartment,2,2,104,208,0,38.7437,-9.1296,Portugal,Lisboa,Lisboa,Areeiro,3312,400000
+260,As New,Homes,Apartment,3,3,126,252,0,38.7487,-9.1420,Portugal,Lisboa,Lisboa,Alvalade,3623,520000
+261,As New,Homes,Duplex,3,2,84,168,0,38.7179,-9.1235,Portugal,Lisboa,Lisboa,Sao Vicente,3402,315000
+262,As New,Homes,Apartment,2,3,113,226,0,38.7667,-9.0969,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,665000
+263,As New,Homes,Apartment,3,3,87,174,0,38.7608,-9.1103,Portugal,Lisboa,Lisboa,Olivais,2463,320000
+264,As New,Homes,Apartment,1,1,23,46,0,38.7027,-9.2000,Portugal,Lisboa,Lisboa,Ajuda,3137,175000
+265,As New,Homes,Apartment,1,1,26,52,0,38.7027,-9.2000,Portugal,Lisboa,Lisboa,Ajuda,3137,197500
+266,As New,Homes,Apartment,4,3,178,356,0,38.7112,-9.2080,Portugal,Lisboa,Lisboa,Belem,3542,848000
+267,As New,Homes,Apartment,1,1,50,100,0,38.7173,-9.1286,Portugal,Lisboa,Lisboa,Sao Vicente,3402,190000
+268,As New,Homes,Apartment,3,3,144,288,0,38.7760,-9.0967,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,579000
+269,As New,Homes,Apartment,3,2,72,144,0,38.7165,-9.1472,Portugal,Lisboa,Lisboa,Santo Antonio,5340,475000
+270,As New,Homes,Apartment,2,2,145,290,0,38.7455,-9.1472,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,799000
+271,As New,Homes,Apartment,1,1,50,100,0,38.7654,-9.1807,Portugal,Lisboa,Lisboa,Carnide,3027,230000
+272,As New,Homes,Apartment,3,3,141,282,0,38.7748,-9.1142,Portugal,Lisboa,Lisboa,Olivais,2463,479000
+273,As New,Homes,Apartment,1,1,63,126,0,38.7818,-9.0986,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,338000
+274,As New,Homes,Apartment,3,2,88,176,0,38.7470,-9.1036,Portugal,Lisboa,Lisboa,Marvila,2881,532000
+275,As New,Homes,Apartment,2,1,98,196,0,38.7168,-9.1325,Portugal,Lisboa,Lisboa,Sao Vicente,3402,700000
+276,As New,Homes,Apartment,4,3,177,354,0,38.7766,-9.1497,Portugal,Lisboa,Lisboa,Lumiar,2927,565000
+277,As New,Homes,Apartment,3,2,100,200,0,38.7520,-9.1474,Portugal,Lisboa,Lisboa,Alvalade,3623,570000
+278,As New,Homes,Apartment,3,2,102,204,0,38.7127,-9.1450,Portugal,Lisboa,Lisboa,Misericordia,5112,525000
+279,As New,Homes,Apartment,2,1,85,170,0,38.7476,-9.1156,Portugal,Lisboa,Lisboa,Marvila,2881,285000
+280,As New,Homes,Apartment,2,1,45,90,0,38.7116,-9.1286,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,287000
+281,As New,Homes,Duplex,2,2,82,164,0,38.7234,-9.1368,Portugal,Lisboa,Lisboa,Arroios,3277,395000
+282,As New,Homes,Apartment,1,1,30,60,0,38.7116,-9.1286,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,248000
+283,As New,Homes,Apartment,3,2,90,180,0,38.7176,-9.1472,Portugal,Lisboa,Lisboa,Santo Antonio,5340,660000
+284,As New,Homes,Apartment,3,4,192,384,0,38.6963,-9.2202,Portugal,Lisboa,Lisboa,Belem,3542,1390000
+285,As New,Homes,Apartment,1,1,42,84,0,38.7094,-9.1673,Portugal,Lisboa,Lisboa,Estrela,4005,161000
+286,As New,Homes,Apartment,2,1,84,168,0,38.7160,-9.1368,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,580000
+287,As New,Homes,Apartment,3,2,130,260,0,38.7197,-9.1595,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,490000
+288,As New,Homes,Apartment,3,3,141,282,0,38.7787,-9.1101,Portugal,Lisboa,Lisboa,Olivais,2463,795000
+289,As New,Homes,Apartment,2,1,65,130,0,38.7038,-9.1994,Portugal,Lisboa,Lisboa,Ajuda,3137,430000
+290,As New,Homes,Apartment,4,3,164,328,0,38.7694,-9.0955,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,770000
+291,As New,Homes,Apartment,3,2,91,182,1,38.7549,-9.1779,Portugal,Lisboa,Lisboa,Sao Domingos de Benfica,3412,375000
+292,As New,Homes,Apart Hotel,0,1,34,68,0,38.7534,-9.1808,Portugal,Lisboa,Lisboa,Sao Domingos de Benfica,3412,238000
+293,As New,Homes,Apartment,2,2,83,166,0,38.7899,-9.0996,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,359000
+294,As New,Homes,Apartment,3,2,130,260,0,38.7538,-9.2005,Portugal,Lisboa,Lisboa,Benfica,2727,350000
+295,As New,Homes,Apartment,2,1,50,100,0,38.7055,-9.1886,Portugal,Lisboa,Lisboa,Alcantara,3125,225000
+296,As New,Homes,Apartment,3,2,59,118,0,38.7235,-9.1419,Portugal,Lisboa,Lisboa,Santo Antonio,5340,315000
+297,As New,Homes,Duplex,3,3,120,240,0,38.7624,-9.0983,Portugal,Lisboa,Lisboa,Parque das Nacoes,4162,620000
+298,As New,Homes,Apartment,2,1,70,140,0,38.7087,-9.1607,Portugal,Lisboa,Lisboa,Estrela,4005,345000
+299,As New,Homes,Apartment,1,1,50,100,0,38.7053,-9.1934,Portugal,Lisboa,Lisboa,Ajuda,3137,210000
+300,As New,Homes,Apartment,4,5,212,424,0,38.7319,-9.1520,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,2200000
+301,As New,Homes,Duplex,5,4,153,306,0,38.7320,-9.1472,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,1190000
+302,As New,Homes,Apartment,2,2,90,180,0,38.7246,-9.1168,Portugal,Lisboa,Lisboa,Penha de Franca,2973,319000
+303,As New,Homes,Apartment,2,2,182,364,0,38.7077,-9.2127,Portugal,Lisboa,Lisboa,Belem,3542,690000
+304,As New,Single Habitation,Townhouse Dwelling,6,3,208,416,0,38.7455,-9.2067,Portugal,Lisboa,Lisboa,Benfica,2727,790000
+305,As New,Single Habitation,Townhouse Dwelling,2,3,160,320,0,38.6992,-9.2199,Portugal,Lisboa,Lisboa,Belem,3542,1200000
+306,For Refurbishment,Homes,Apartment,3,1,55,110,0,38.7594,-9.1110,Portugal,Lisboa,Lisboa,Olivais,2463,179000
+307,For Refurbishment,Homes,Apartment,2,1,65,130,0,38.7350,-9.1135,Portugal,Lisboa,Lisboa,Beato,2534,163500
+308,For Refurbishment,Homes,Apartment,3,2,130,260,0,38.7086,-9.1671,Portugal,Lisboa,Lisboa,Estrela,4005,675000
+309,For Refurbishment,Homes,Apartment,2,1,77,154,0,38.7338,-9.1303,Portugal,Lisboa,Lisboa,Penha de Franca,2973,275000
+310,For Refurbishment,Homes,Apartment,6,2,150,300,0,38.7262,-9.1350,Portugal,Lisboa,Lisboa,Arroios,3277,700000
+311,For Refurbishment,Homes,Apartment,2,1,58,116,0,38.7269,-9.1649,Portugal,Lisboa,Lisboa,Campolide,3036,160000
+312,For Refurbishment,Homes,Apartment,3,2,103,206,0,38.7453,-9.1472,Portugal,Lisboa,Lisboa,Alvalade,3623,460000
+313,For Refurbishment,Homes,Apartment,1,1,50,100,0,38.7328,-9.1282,Portugal,Lisboa,Lisboa,Penha de Franca,2973,149500
+314,For Refurbishment,Homes,Apartment,2,1,62,124,0,38.7307,-9.1297,Portugal,Lisboa,Lisboa,Penha de Franca,2973,204000
+315,For Refurbishment,Homes,Apartment,4,2,168,336,0,38.7118,-9.1328,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,900000
+316,For Refurbishment,Homes,Apartment,3,1,60,120,0,38.7791,-9.1198,Portugal,Lisboa,Lisboa,Olivais,2463,165000
+317,For Refurbishment,Homes,Apartment,2,1,60,120,0,38.7045,-9.1679,Portugal,Lisboa,Lisboa,Estrela,4005,198000
+318,For Refurbishment,Homes,Apartment,3,1,75,150,0,38.7177,-9.1342,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,290000
+319,For Refurbishment,Homes,Duplex,4,2,130,260,0,38.7093,-9.1665,Portugal,Lisboa,Lisboa,Estrela,4005,520000
+320,For Refurbishment,Homes,Apartment,4,3,130,260,0,38.7568,-9.1782,Portugal,Lisboa,Lisboa,Sao Domingos de Benfica,3412,376500
+321,For Refurbishment,Homes,Apartment,3,1,83,166,0,38.7125,-9.1564,Portugal,Lisboa,Lisboa,Estrela,4005,250000
+322,For Refurbishment,Homes,Apartment,2,1,70,140,0,38.7269,-9.1649,Portugal,Lisboa,Lisboa,Campolide,3036,125500
+323,For Refurbishment,Homes,Apartment,3,1,85,170,0,38.7619,-9.1127,Portugal,Lisboa,Lisboa,Olivais,2463,187000
+324,For Refurbishment,Homes,Apartment,3,2,83,166,0,38.7321,-9.1284,Portugal,Lisboa,Lisboa,Penha de Franca,2973,267000
+325,For Refurbishment,Homes,Apartment,4,2,102,204,0,38.7544,-9.1161,Portugal,Lisboa,Lisboa,Marvila,2881,249000
+326,For Refurbishment,Homes,Apartment,3,2,107,214,0,38.7466,-9.1348,Portugal,Lisboa,Lisboa,Alvalade,3623,430000
+327,For Refurbishment,Homes,Apartment,3,1,80,160,0,38.7177,-9.1342,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,320000
+328,For Refurbishment,Homes,Apartment,2,1,54,108,0,38.7062,-9.1638,Portugal,Lisboa,Lisboa,Estrela,4005,275000
+329,For Refurbishment,Homes,Apartment,5,2,136,272,0,38.7362,-9.1305,Portugal,Lisboa,Lisboa,Penha de Franca,2973,450000
+330,For Refurbishment,Homes,Apartment,3,2,77,154,0,38.7216,-9.1436,Portugal,Lisboa,Lisboa,Santo Antonio,5340,298000
+331,For Refurbishment,Homes,Apartment,2,1,47,94,0,38.7172,-9.1632,Portugal,Lisboa,Lisboa,Campo de Ourique,3859,235000
+332,For Refurbishment,Homes,Apartment,2,1,56,112,0,38.7166,-9.1385,Portugal,Lisboa,Lisboa,Arroios,3277,199900
+333,For Refurbishment,Homes,Apartment,1,1,51,102,0,38.7086,-9.1555,Portugal,Lisboa,Lisboa,Estrela,4005,189000
+334,For Refurbishment,Homes,Apartment,2,1,55,110,0,38.7696,-9.1133,Portugal,Lisboa,Lisboa,Olivais,2463,170000
+335,For Refurbishment,Homes,Apartment,1,1,51,102,0,38.7245,-9.1203,Portugal,Lisboa,Lisboa,Penha de Franca,2973,160000
+336,For Refurbishment,Homes,Apartment,4,1,112,224,0,38.7305,-9.1396,Portugal,Lisboa,Lisboa,Arroios,3277,375000
+337,For Refurbishment,Homes,Apartment,3,1,103,206,0,38.7297,-9.1397,Portugal,Lisboa,Lisboa,Arroios,3277,325000
+338,For Refurbishment,Homes,Apartment,2,1,100,200,0,38.7304,-9.1395,Portugal,Lisboa,Lisboa,Arroios,3277,270000
+339,For Refurbishment,Homes,Apartment,2,1,93,186,0,38.7297,-9.1397,Portugal,Lisboa,Lisboa,Arroios,3277,270000
+340,For Refurbishment,Homes,Apartment,4,2,179,358,0,38.7265,-9.1443,Portugal,Lisboa,Lisboa,Santo Antonio,5340,630000
+341,For Refurbishment,Homes,Apartment,2,2,51,102,0,38.7126,-9.1265,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,235000
+342,For Refurbishment,Homes,Apartment,5,1,135,270,0,38.7365,-9.1417,Portugal,Lisboa,Lisboa,Avenidas Novas,3841,480000
+343,For Refurbishment,Homes,Apartment,1,1,54,108,0,38.7227,-9.1456,Portugal,Lisboa,Lisboa,Santo Antonio,5340,240000
+344,For Refurbishment,Homes,Apartment,3,2,113,226,0,38.7589,-9.1695,Portugal,Lisboa,Lisboa,Lumiar,2927,450000
+345,For Refurbishment,Homes,Apartment,2,1,46,92,0,38.7281,-9.1409,Portugal,Lisboa,Lisboa,Arroios,3277,205000
+346,For Refurbishment,Homes,Apartment,2,1,66,132,0,38.7460,-9.1769,Portugal,Lisboa,Lisboa,Benfica,2727,196500
+347,For Refurbishment,Homes,Apartment,3,1,75,150,0,38.7177,-9.1341,Portugal,Lisboa,Lisboa,Santa Maria Maior,4807,245000
+348,For Refurbishment,Single Habitation,Townhouse Dwelling,2,1,90,180,0,38.7694,-9.1138,Portugal,Lisboa,Lisboa,Olivais,2463,486000
+349,For Refurbishment,Single Habitation,Dwelling,4,3,121,242,0,38.7030,-9.2044,Portugal,Lisboa,Lisboa,Belem,3542,375000
+350,For Refurbishment,Single Habitation,Townhouse Dwelling,2,2,70,140,0,38.7265,-9.1680,Portugal,Lisboa,Lisboa,Campolide,3036,850000
