@@ -1,12 +1,12 @@
 | Termin     | Prezentujący                                              | Tytuł                                                                                                              |
 |------------|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| 23.03.2023 | Tymoteusz Kwieciński, Marta Szuwarska                     | Expanding Tidy Data Principles to Facilitate Missing Data Exploration, Visualization and Assessment of Imputations |
-| 13.04.2023 | Jakub Piwko, Dominik Kędzierski, Kacper Skonieczka        | A Method for Visualizing Multivariate Time Series Data                                                             |
+| 23.03.2023 | Tymoteusz Kwieciński, Marta Szuwarska                     | [Expanding Tidy Data Principles to Facilitate Missing Data Exploration, Visualization and Assessment of Imputations](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations/Kwiecinski_Szuwarska) |
+| 13.04.2023 | Jakub Piwko, Dominik Kędzierski, Kacper Skonieczka        | [A Method for Visualizing Multivariate Time Series Data](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations/Piwko_K%C4%99dzierski_Skonieczka)                                                             |
 | 13.04.2023 | Weronika Dyszkiewicz, Antoni Chudy, Krzysztof Kłopotowski | missMDA: A Package for Handling Missing Values in Multivariate Data Analysis                                       |
-| 20.04.2023 | Zuzanna Glinka, Malwina Wojewoda, Laura Hoang             | Deducer: A Data Analysis GUI for R                                                                                 |
-| 25.05.2023 | Grzegorz Pióro, Ziemowit Głowaczewski                     | fitdistrplus: An R Package for Fitting Distributions                                                               |
-| 25.05.2023 | Iza Danielewska, Paweł Drągowski, Mateusz Madej           | Interactive Dendrograms: The R Packages idendro and idendr0                                                        |
-| 01.06.2023 | Kinga Frańczak, Marcel Witas                              | New Approaches in Visualization of Categorical Data: R Package extracat                                            |
+| 20.04.2023 | Zuzanna Glinka, Malwina Wojewoda, Laura Hoang             | [Deducer: A Data Analysis GUI for R](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations/Hoang_Glinka_Wojewoda)                                                                                 |
+| 25.05.2023 | Grzegorz Pióro, Ziemowit Głowaczewski                     | [fitdistrplus: An R Package for Fitting Distributions](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations/Pioro_Glowaczewski)                                                               |
+| 25.05.2023 | Iza Danielewska, Paweł Drągowski, Mateusz Madej           | [Interactive Dendrograms: The R Packages idendro and idendr0](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations/Danielewska_Dragowski_Madej)                                                        |
+| 01.06.2023 | Kinga Frańczak, Marcel Witas                              | [New Approaches in Visualization of Categorical Data: R Package extracat](https://github.com/MI2-Education/2023L-AdvancedR/tree/main/presentations/Fra%C5%84czak_Witas)                                            |
 
 
 
